@@ -37,23 +37,22 @@ const CountdownTimer: React.FC<CountdownTimerProps> = ({ endTime, onComplete }) 
 
     return (
         <div className={styles.container}>
-            <div className={styles.title}>Let the countdown begin</div>
-            <div className={styles.timerBoxes}>
-                <div className={styles.timeBox}>
-                    <div className={styles.timeValue}>{timeLeft.days}</div>
-                    <div className={styles.timeLabel}>Days</div>
+            <div className={styles.cards}>
+                <div className={styles.card}>
+                    <div className={styles.value}>{timeLeft.days}</div>
+                    <div className={styles.label}>Days</div>
                 </div>
-                <div className={styles.timeBox}>
-                    <div className={styles.timeValue}>{timeLeft.hours}</div>
-                    <div className={styles.timeLabel}>Hours</div>
+                <div className={styles.card}>
+                    <div className={styles.value}>{timeLeft.hours}</div>
+                    <div className={styles.label}>Hours</div>
                 </div>
-                <div className={styles.timeBox}>
-                    <div className={styles.timeValue}>{timeLeft.minutes}</div>
-                    <div className={styles.timeLabel}>Minutes</div>
+                <div className={styles.card}>
+                    <div className={styles.value}>{timeLeft.minutes}</div>
+                    <div className={styles.label}>Minutes</div>
                 </div>
-                <div className={styles.timeBox}>
-                    <div className={styles.timeValue}>{timeLeft.seconds}</div>
-                    <div className={styles.timeLabel}>Seconds</div>
+                <div className={styles.card}>
+                    <div className={styles.value}>{timeLeft.seconds}</div>
+                    <div className={styles.label}>Seconds</div>
                 </div>
             </div>
         </div>
