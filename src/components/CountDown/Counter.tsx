@@ -1,12 +1,17 @@
-import React, { useEffect, useState } from "react";
-import styles from "./CountdownTimer.module.css";
+import { useEffect, useState } from 'react';
+import TimeUnitCard from './TimeUnitCard';
+
+interface TimeUnit {
+    value: number;
+    label: string;
+    max: number;
+}
 
 type CountdownTimerProps = {
     endTime: Date;
-    onComplete?: () => void;
 };
 
-const CountdownTimer: React.FC<CountdownTimerProps> = ({ endTime, onComplete }) => {
+const CountdownTimer: React.FC<CountdownTimerProps> = ({ endTime }) => {
     const calculateTimeLeft = () => {
         const now = new Date().getTime();
         const end = endTime.getTime();
@@ -17,43 +22,39 @@ const CountdownTimer: React.FC<CountdownTimerProps> = ({ endTime, onComplete }) 
         const minutes = Math.floor((totalSeconds % 3600) / 60);
         const seconds = totalSeconds % 60;
 
-        return { totalSeconds, days, hours, minutes, seconds };
+        return { days, hours, minutes, seconds };
     };
 
-    const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
+    const [timeLeft, setTimeLeft] = useState(calculateTimeLeft);
 
     useEffect(() => {
-        if (timeLeft.totalSeconds <= 0) {
-            onComplete?.();
-            return;
-        }
-
         const timer = setInterval(() => {
             setTimeLeft(calculateTimeLeft());
         }, 1000);
 
         return () => clearInterval(timer);
-    }, [timeLeft.totalSeconds, endTime, onComplete]);
+    }, [endTime]);
+    const maxDays = endTime.getDate() - new Date().getDate();
+    console.log(maxDays)
+    const timeUnits: TimeUnit[] = [
+        { value: timeLeft.days, label: 'Days', max: 60 },
+        { value: timeLeft.hours, label: 'Hours', max: 24 },
+        { value: timeLeft.minutes, label: 'Minutes', max: 60 },
+        { value: timeLeft.seconds, label: 'Seconds', max: 60 }
+    ]
 
     return (
-        <div className={styles.container}>
-            <div className={styles.cards}>
-                <div className={styles.card}>
-                    <div className={styles.value}>{timeLeft.days}</div>
-                    <div className={styles.label}>Days</div>
-                </div>
-                <div className={styles.card}>
-                    <div className={styles.value}>{timeLeft.hours}</div>
-                    <div className={styles.label}>Hours</div>
-                </div>
-                <div className={styles.card}>
-                    <div className={styles.value}>{timeLeft.minutes}</div>
-                    <div className={styles.label}>Minutes</div>
-                </div>
-                <div className={styles.card}>
-                    <div className={styles.value}>{timeLeft.seconds}</div>
-                    <div className={styles.label}>Seconds</div>
-                </div>
+        <div className="min-h-screen bg-purple-400 flex items-center justify-center p-4">
+
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+                {timeUnits.map(unit => (
+                    <TimeUnitCard
+                        key={unit.label}
+                        value={unit.value}
+                        label={unit.label}
+                        max={unit.max}
+                    />
+                ))}
             </div>
         </div>
     );
