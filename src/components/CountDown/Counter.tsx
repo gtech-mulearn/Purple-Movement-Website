@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import TimeUnitCard from './TimeUnitCard';
+import { Timer } from 'lucide-react';
+import './countdown.css';
 
 interface TimeUnit {
     value: number;
@@ -34,25 +36,31 @@ const CountdownTimer: React.FC<CountdownTimerProps> = ({ endTime }) => {
 
         return () => clearInterval(timer);
     }, [endTime]);
-    const maxDays = endTime.getDate() - new Date().getDate();
-    console.log(maxDays)
+
     const timeUnits: TimeUnit[] = [
-        { value: timeLeft.days, label: 'Days', max: 60 },
+        { value: timeLeft.days, label: 'Days', max: 365 },
         { value: timeLeft.hours, label: 'Hours', max: 24 },
         { value: timeLeft.minutes, label: 'Minutes', max: 60 },
         { value: timeLeft.seconds, label: 'Seconds', max: 60 }
-    ]
+    ];
 
     return (
-        <div className="min-h-screen bg-purple-400 flex items-center justify-center p-4">
-
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-                {timeUnits.map(unit => (
+        <div className="countdown-container">
+            <div className="countdown-header">
+                <Timer size={40} className="timer-icon" />
+                <h2 className="countdown-title">Countdown</h2>
+            </div>
+            <div className="countdown-grid">
+                {timeUnits.map((unit, index) => (
                     <TimeUnitCard
                         key={unit.label}
                         value={unit.value}
                         label={unit.label}
                         max={unit.max}
+                        style={{
+                            animationDelay: `${index * 0.2}s`,
+                            transform: `translateY(${Math.sin(index * Math.PI / 2) * 10}px)`
+                        }}
                     />
                 ))}
             </div>
