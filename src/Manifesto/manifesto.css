@@ -1,0 +1,81 @@
+.manifesto-container {
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #4b0082, #000);
+  color: white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 2rem;
+}
+
+.manifesto-wrapper {
+  max-width: 90%;
+  margin: 0 auto;
+  
+}
+
+.manifesto-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.manifesto-title-box {
+  width: 100%;
+  background-color: #6a0dad;
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+}
+
+.manifesto-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #d8b4fe;
+  letter-spacing: 1px;
+}
+
+.manifesto-subtitle {
+  font-size: 1.2rem;
+  color: #e0aaff;
+  margin-left: 0.5rem;
+}
+
+.manifesto-main-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #c084fc;
+}
+
+.manifesto-text {
+  font-size: 1.2rem;
+  line-height: 2rem;
+  margin-bottom: 1.5rem;
+  color: #e6e6fa;
+}
+
+.highlight-purple {
+  color: #c084fc;
+}
+
+.highlight-red {
+  color: #ff79c6;
+  font-weight: bold;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.manifesto-tagline {
+  font-size: 1.75rem;
+  color: #bb86fc;
+  font-weight: bold;
+  margin: 2rem 0 1rem;
+}
+
+.manifesto-callout {
+  font-size: 1.5rem;
+  color: #e0aaff;
+  font-style: italic;
+  margin: 2rem 0;
+}
