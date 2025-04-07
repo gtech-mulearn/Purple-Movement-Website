@@ -1,8 +1,7 @@
-import React from "react";
+import { ArrowRight, Sparkles, Star } from 'lucide-react';
 import "./manifesto.css";
-import { Sparkles, ArrowRight, Star } from 'lucide-react';
 const Manifesto = () => {
- 
+
   return (
     <div className="container">
       {/* Hero Section */}
