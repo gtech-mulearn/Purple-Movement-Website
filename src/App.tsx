@@ -1,14 +1,15 @@
-import Counter from './Counter'
-import Manifesto from './Manifesto/manifesto';
+import CountdownTimer from "./components/CountDown/Counter";
+import Manifesto from "./components/Manifesto/manifesto";
+
 
 function App() {
   const targetDate = new Date("2025-06-07T00:00:00");
 
   return (
     <>
-    <Manifesto />
+      <Manifesto />
       <div>
-        <Counter endTime={targetDate} />
+        <CountdownTimer endTime={targetDate} />
       </div>
     </>
   )
