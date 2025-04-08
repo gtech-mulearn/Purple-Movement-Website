@@ -32,10 +32,10 @@
         text-align: center;
         gap: 0.5rem;
     }
+
     @media screen and (max-width: 405px) {
-        padding: 1rem 1.5rem;
-       
-        width: 50px;
+        padding: 2.5rem 1.85rem;
+        width: 60px;
         height: 60px;
         text-align: center;
         gap: 0.5rem;
