@@ -12,9 +12,9 @@ function App() {
         <div className={`absolute top-1/4 left-1/2 -translate-x-1/2 w-[110vw] h-[100vh] opacity-80 blur-[300px] rounded-t-[60%] ${styles.pulseColor}`} />
       </div>
       {/* Main Content */}
-      <div className="flex items-center justify-center gap-2 text-purple-500 mt-10">
+      <center><div className="flex items-center justify-center gap-2 text-purple-500 mt-10">
                     <h1 className="text-5xl md:text-6xl font-extrabold tracking-widest uppercase ">The Purple Movement</h1>
-                </div>
+                </div></center>
       <div className="relative z-10 max-w-4xl mx-auto px-4 py-20 space-y-24">
       <CountDownTimer endDate={endDate} />
         <Manifesto />

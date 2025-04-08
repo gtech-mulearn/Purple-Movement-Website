@@ -8,17 +8,17 @@ body::-webkit-scrollbar {
 
 
 body::-webkit-scrollbar-track {
-  background: rgb(1, 9, 17);
+  background: rgba(1, 9, 17, 0);
 
 }
 
 
 body::-webkit-scrollbar-thumb {
-  background: #41025c;
+  background: #2c003f;
   border-radius: 20px;
 }
 
 
 body::-webkit-scrollbar-thumb:hover {
-  background: #3d0354;
+  background: #3d035400;
 }
