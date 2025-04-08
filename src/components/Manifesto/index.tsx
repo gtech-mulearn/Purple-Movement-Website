@@ -19,7 +19,7 @@ const Manifesto = () => {
                     </p>
                 </div>
 
-                <button className="bg-purple-600 hover:bg-purple-500 transition-colors px-8 py-3 rounded-full text-lg font-semibold text-white shadow-lg shadow-purple-900/40">
+                <button className="bg-purple-600 hover:bg-purple-700 transition  duration-300 ease-in-out px-8 py-3 rounded-full text-lg font-semibold text-white shadow-lg shadow-purple-600/80 hover:shadow-purple-700/180">
                     Join the Movement →
                 </button>
             </div >
