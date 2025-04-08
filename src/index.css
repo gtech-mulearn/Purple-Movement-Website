@@ -2,21 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body::-webkit-scrollbar {
   width: 4px;
 }
 
 
 body::-webkit-scrollbar-track {
-  background:rgb(80, 79, 79);
+  background: rgb(80, 79, 79);
 
 }
 
 
 body::-webkit-scrollbar-thumb {
   background: #323131;
- 
+
   border-radius: 20px;
 }
-
-
