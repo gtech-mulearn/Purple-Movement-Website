@@ -3,10 +3,9 @@ import { Star } from 'lucide-react';
 const Manifesto = () => {
     return (
         <>
+       
             <div className="text-center space-y-8">
-                <div className="flex items-center justify-center gap-2 text-purple-500 mt-10">
-                    <h1 className="text-5xl md:text-6xl font-extrabold tracking-widest uppercase ">The Purple Movement</h1>
-                </div>
+                
 
                 <h2 className="tracking-[0.2em] leading-tight text-2xl md:text-4xl pt-16 font-semibold pb-4 text-white">
                     We are the Manifestors of Change.
@@ -19,13 +18,11 @@ const Manifesto = () => {
                     </p>
                 </div>
 
-                <button className="bg-purple-600 hover:bg-purple-500 transition-colors px-8 py-3 rounded-full text-lg font-semibold text-white shadow-lg shadow-purple-900/40">
-                    Join the Movement →
-                </button>
+              
             </div >
 
             {/* Manifesto Section */}
-            <div className="space-y-12 text-center text-purple-100 mt-24" >
+            <div className="space-y-12 text-center text-purple-100 mt-24 px-8" >
                 <div className="space-y-6">
                     <p className="text-xl">We are the voice of a generation that refuses to settle.</p>
                     <p className="text-xl">We are not consumers of culture.</p>
