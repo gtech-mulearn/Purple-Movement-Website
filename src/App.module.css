@@ -1,0 +1,15 @@
+@keyframes pulseColor {
+
+    0%,
+    100% {
+        background-color: #671FD1;
+    }
+
+    50% {
+        background-color: #9837ff;
+    }
+}
+
+.pulseColor {
+    animation: pulseColor 10s ease-in-out infinite;
+}
