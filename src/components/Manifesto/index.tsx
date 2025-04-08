@@ -18,13 +18,11 @@ const Manifesto = () => {
                     </p>
                 </div>
 
-                <button className="bg-purple-600 hover:bg-purple-700 transition  duration-300 ease-in-out px-8 py-3 rounded-full text-lg font-semibold text-white shadow-lg shadow-purple-600/80 hover:shadow-purple-700/180">
-                    Join the Movement →
-                </button>
+              
             </div >
 
             {/* Manifesto Section */}
-            <div className="space-y-12 text-center text-purple-100 mt-24" >
+            <div className="space-y-12 text-center text-purple-100 mt-24 px-8" >
                 <div className="space-y-6">
                     <p className="text-xl">We are the voice of a generation that refuses to settle.</p>
                     <p className="text-xl">We are not consumers of culture.</p>

@@ -3,22 +3,20 @@
 @tailwind utilities;
 
 body::-webkit-scrollbar {
-  width: 8px;
+  width: 4px;
 }
 
 
 body::-webkit-scrollbar-track {
-  background: rgba(1, 9, 17, 0);
+  background:rgb(80, 79, 79);
 
 }
 
 
 body::-webkit-scrollbar-thumb {
-  background: #2c003f;
+  background: #323131;
+ 
   border-radius: 20px;
 }
 
 
-body::-webkit-scrollbar-thumb:hover {
-  background: #3d035400;
-}
