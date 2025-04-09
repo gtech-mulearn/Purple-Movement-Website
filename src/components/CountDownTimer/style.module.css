@@ -114,6 +114,8 @@
   .flipCard {
     backface-visibility: hidden;
     position: absolute;
+    margin: 0%;
+    padding: 25px 0;
     width: 100%;
     top: 0;
     left: 0;
@@ -125,6 +127,7 @@
   }
   
   .back {
+    padding: 15px 10px;
     transform: rotateY(180deg);
   }
   
