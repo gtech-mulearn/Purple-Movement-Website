@@ -3,8 +3,7 @@ import { Star } from 'lucide-react';
 const Manifesto = () => {
     return (
         <>
-       
-            <div className="text-center space-y-8">
+       <div> <div className="text-center space-y-8">
                 
 
                 <h2 className="tracking-[0.2em] leading-tight text-2xl md:text-4xl pt-16 font-semibold pb-4 text-white">
@@ -70,7 +69,8 @@ const Manifesto = () => {
                 </div>
 
                 <p className="text-4xl font-bold text-[#E879F9]">AND IT STARTS NOW.</p>
-            </div >
+            </div ></div>
+           
         </>
     );
 };

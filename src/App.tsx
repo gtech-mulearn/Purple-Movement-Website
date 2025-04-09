@@ -17,6 +17,7 @@ function App() {
                 </div></center>
       <div className="relative z-10 max-w-4xl mx-auto px-4 pt-10 pb-10 space-y-24">
       <CountDownTimer endDate={endDate} />
+      <div className="h-[60vh]" />
         <Manifesto />
         
       </div>
