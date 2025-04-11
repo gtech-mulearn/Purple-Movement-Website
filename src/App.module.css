@@ -1,4 +1,4 @@
-@keyframes pulseColor {
+/* @keyframes pulseColor {
 
     0%,
     100% {
@@ -12,4 +12,16 @@
 
 .pulseColor {
     animation: pulseColor 10s ease-in-out infinite;
+} */
+.pulseColor{
+    background: #0a0519; /* deep base color */
+    background-image: 
+      radial-gradient(circle at 20% 20%, rgba(61, 3, 103, 0.964), transparent 40%),
+      radial-gradient(circle at 80% 25%, rgba(132, 0, 255, 0.15), transparent 45%),
+      radial-gradient(circle at 70% 80%, rgba(255, 0, 128, 0.1), transparent 50%);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+    margin: 0;
+    
 }
