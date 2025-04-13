@@ -4,7 +4,7 @@ const Manifesto = () => {
     const [expanded, setExpanded] = useState(false);
 
     return (
-        <div className={` h-full w-full flex justify-center items-center px-4`}>
+        <div className={` mt-4 h-full w-full flex justify-center items-center px-4`}>
             <div className="tracking-[0.2em] text-purple-100 w-full max-w-md space-y-3">
                 <div className="space-y-1">
                     <h2 className={`${styles.manifestor} tracking-[0.1em] leading-tight text-3xl font-extrabold `} >
