@@ -1,77 +1,82 @@
-import { Star } from 'lucide-react';
-
+import { useState } from "react";
+import styles from './style.module.css';
 const Manifesto = () => {
+    const [expanded, setExpanded] = useState(false);
+
     return (
-        <>
-       <div> <div className="text-center space-y-8">
-                
+        <div className={` h-full w-full flex justify-center items-center px-4`}>
+            <div className="tracking-[0.2em] text-purple-100 w-full max-w-md space-y-3">
+                <div className="space-y-1">
+                    <h2 className={`${styles.manifestor} tracking-[0.1em] leading-tight text-3xl font-extrabold `} >
+                        Manifestors
+                    </h2>
+                    <div className={`${styles.cont}`}>   
+                    <div className="space-y-1">
+                        <p className="text-sm">We are the Manifestors of Change.</p>
+                        <p className="text-sm">We are not waiting for the future.</p>
+                        <p className="text-sm">
+                            We are building it—with courage, code, creativity, and clarity.
+                        </p>
+                    </div>
+  
 
-                <h2 className="tracking-[0.2em] leading-tight text-2xl md:text-4xl pt-16 font-semibold pb-4 text-white">
-                    We are the Manifestors of Change.
-                </h2>
+            
+                        <div className="space-y-1 text-sm">
+                            <p>We are the voice of a generation that refuses to settle.</p>
+                            <p>We are not consumers of culture.</p>
+                            <p>
+                                We are <span className="text-[#a632ff] font-semibold">producers of purpose</span>.
+                            </p>
+                            <p>We break barriers, not just for ourselves, but for every young mind daring to dream.</p>
+                        </div>
+    {/* Show this part always */}
 
-                <div className="space-y-4 text-purple-200">
-                    <p className="text-xl">We are not waiting for the future.</p>
-                    <p className="text-xl">
-                        We are building it—with courage, code, creativity, and clarity.
-                    </p>
-                </div>
+    {expanded && (
+                    <>
+                        <div className="space-y-1 text-sm">
+                            <p>We believe in ecosystems that empower, not limit.</p>
+                            <p>In access, not gatekeeping.</p>
+                            <p>In bold visions, not borrowed templates.</p>
+                        </div>
 
-              
-            </div >
+                        <div className="space-y-1 text-sm">
+                            <p>
+                                We are here to <span className="text-[#a632ff] font-semibold">reclaim the narrative</span>—
+                            </p>
+                            <p>To give confidence to the curious,</p>
+                            <p>Networks to the bold,</p>
+                            <p>And direction to the determined.</p>
+                        </div>
 
-            {/* Manifesto Section */}
-            <div className="space-y-12 text-center text-purple-100 mt-24 px-8" >
-                <div className="space-y-6">
-                    <p className="text-xl">We are the voice of a generation that refuses to settle.</p>
-                    <p className="text-xl">We are not consumers of culture.</p>
-                    <p className="text-xl">
-                        We are <span className="text-[#E879F9] font-semibold">producers of purpose</span>.
-                    </p>
-                    <p className="text-xl">
-                        We break barriers, not just for ourselves, but for every young mind daring to dream.
-                    </p>
-                </div>
+                        <div className="space-y-1">
+                            <p className="text-base font-semibold">
+                                This is <span className="text-[#a632ff]">The Purple Movement</span>.
+                            </p>
+                            <p className="text-base">A wave of youth power, purpose, and possibility.</p>
+                            <p className="text-base">A signal that change is not coming—it's already here.</p>
+                        </div>
 
-                <div className="space-y-4">
-                    <p className="text-xl">We believe in ecosystems that empower, not limit.</p>
-                    <p className="text-xl">In access, not gatekeeping.</p>
-                    <p className="text-xl">In bold visions, not borrowed templates.</p>
-                </div>
+                        <div className="space-y-1 text-sm">
+                            <p>We are the energy.</p>
+                            <p>We are the strategy.</p>
+                            <p>We are the spark.</p>
+                        </div>
 
-                <div className="flex justify-center gap-4">
-                    <Star className="w-6 h-6 text-purple-500" />
-                    <Star className="w-6 h-6 text-purple-300" />
-                    <Star className="w-6 h-6 text-purple-500" />
-                </div>
+                        <p className="text-xl font-bold text-[#a632ff]">AND IT STARTS NOW.</p>
+                    </>
+                )}</div>
 
-                <div className="space-y-4">
-                    <p className="text-xl">
-                        We are here to <span className="text-[#E879F9] font-semibold">reclaim the narrative</span>—
-                    </p>
-                    <p className="text-xl">To give confidence to the curious,</p>
-                    <p className="text-xl">Networks to the bold,</p>
-                    <p className="text-xl">And direction to the determined.</p>
-                </div>
+                {/* Toggle button */}
+                <button
+    onClick={() => setExpanded(!expanded)}
+    className="float-end underline text-white px-3 py-1 text-sm rounded-full font-serif ease-in-out focus:outline-none"
+>
+    {expanded ? "Show Less " : "Read More "}
+</button>
 
-                <div className="space-y-4">
-                    <p className="text-2xl font-semibold">
-                        This is <span className="text-[#E879F9]">The Purple Movement</span>.
-                    </p>
-                    <p className="text-2xl">A wave of youth power, purpose, and possibility.</p>
-                    <p className="text-2xl">A signal that change is not coming—it's already here.</p>
-                </div>
-
-                <div className="space-y-2">
-                    <p className="text-xl">We are the energy.</p>
-                    <p className="text-xl">We are the strategy.</p>
-                    <p className="text-xl">We are the spark.</p>
-                </div>
-
-                <p className="text-4xl font-bold text-[#E879F9]">AND IT STARTS NOW.</p>
-            </div ></div>
-           
-        </>
+            </div>
+        </div>
+        </div>
     );
 };
 

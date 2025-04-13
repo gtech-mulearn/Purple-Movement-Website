@@ -11,40 +11,37 @@
         box-shadow: inset 0 0 30px rgba(255, 255, 255, 0.08);
     }
 }
-
 .glassCard {
-    background-color: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(24px);
-    border-radius: 1rem;
-    padding: 2.5rem 3rem;
-    /* more height + width */
-    text-align: center;
-    animation: slowPulse 6s ease-in-out infinite;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
+  background-color: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(24px);
+  border-radius: 1rem;
+  padding: 2.5rem 2rem;
+  width: 50px;
+  height: 50px;
+  animation: slowPulse 6s ease-in-out infinite;
 
-    @media screen and (max-width: 768px) {
-        padding: 1rem 1.5rem;
-        text-align: center;
-        gap: 0.5rem;
-    }
+  gap: 1rem;
 
-    @media screen and (max-width: 405px) {
-        padding: 2.5rem 1.85rem;
-        width: 60px;
-        height: 60px;
-        text-align: center;
-        gap: 0.5rem;
-    }
+  @media screen and (max-width: 768px) {
+      padding: 1rem 1.5rem;
+      text-align: center;
+      gap: 0.5rem;
+  }
+
+  @media screen and (max-width: 405px) {
+      padding: 2.5rem 1.85rem;
+      width: 60px;
+      height: 60px;
+      text-align: center;
+      gap: 0.5rem;
+  }
 }
 
 
 
-/* globals.css or your CSS file */
+
+
 .no-scrollbar::-webkit-scrollbar {
     display: none;
 }
@@ -85,24 +82,27 @@
 }
 
   .flipCard {
+   
     display: flex;                 /* flex */
     flex-direction: column;       /* flex-col */
     justify-content: center;      /* justify-center */
     align-items: center;          /* items-center */
-    row-gap: 2rem;                /* space-y-8 (2rem = 32px) */
-    min-height: 25vh;             /* min-h-[25vh] */
-    background-color: rgba(255, 255, 255, 0.05); /* bg-white/5 */
+  row-gap: 2rem;                /* space-y-8 (2rem = 32px) */
+    min-height: 45vh;             /* min-h-[25vh] */
+    background-color: rgba(114, 2, 134, 0.223); /* bg-white/5 */
     border-radius: 20px;          /* rounded-[20px] */
-    padding: 2.5rem;              /* p-10 (2.5rem = 40px) */
+            /* p-10 (2.5rem = 40px) */
   }
   
   .flipCardWrapper {
+  position: relative;
+  top: 20%;
+   width: 80%;
     perspective: 1000px;
   }
   
   .flipCardInner {
-    position: relative;
-    width: 100%;
+    
     transition: transform 0.8s;
     transform-style: preserve-3d;
   }
@@ -115,20 +115,63 @@
     backface-visibility: hidden;
     position: absolute;
     margin: 0%;
-    padding: 25px 0;
+
     width: 100%;
     top: 0;
     left: 0;
   }
   
   .front {
+    padding: 10px;
     z-index: 2;
     transform: rotateY(0deg);
   }
   
   .back {
-    padding: 15px 10px;
+    padding: 10px;
     transform: rotateY(180deg);
   }
   
-  
+  .inputBar{
+    background-color: rgba(200, 0, 255, 0.141);
+    padding: 5px;
+    border-radius: 10px;
+  }
+
+  @font-face {
+    font-family: varien;
+    src: url('../src/assets/fonts/varienRegular.ttf');
+}
+
+  .launchTime{
+font-family: varien;
+  }
+
+  @media screen and (max-width: 768px) {
+   .timerRes{
+    margin: 0;
+    padding: 0;
+    height: 40vh;
+   
+   }
+   .flipCardWrapper{
+    width: 70%;
+   }
+}
+.glow{
+  position: absolute;
+  filter: blur(10px);
+  padding: 10px;
+  width: 100%;
+  height: 45vh;
+  background: linear-gradient(to right, #ec4899, #8b5cf6);
+  box-shadow: 0 0 20px #ec4899, 0 0 40px #8b5cf6;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 1s ease-in-out, visibility 4s ease-in-out;
+}
+.flipCardWrapper:hover .glow{
+  opacity: 1;
+  visibility: visible;
+
+}

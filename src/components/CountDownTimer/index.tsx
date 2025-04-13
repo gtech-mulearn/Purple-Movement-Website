@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import styles from './style.module.css'
+import styles from './style.module.css';
+
 const CountDownTimer = ({ endDate }: { endDate: Date }) => {
     const calculateTimeLeft = () => {
         const difference = endDate.getTime() - new Date().getTime();
@@ -17,92 +18,94 @@ const CountDownTimer = ({ endDate }: { endDate: Date }) => {
     };
 
     const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
+    const [isFlipped, setIsFlipped] = useState(false);
 
     useEffect(() => {
         const timer = setInterval(() => {
             setTimeLeft(calculateTimeLeft());
         }, 1000);
-
         return () => clearInterval(timer);
     }, [endDate]);
 
-    const [isFlipped, setIsFlipped] = useState(false);
-
     return (
-        <div className={styles.flipCardWrapper}>
-            <div className={`${styles.flipCardInner} ${isFlipped ? styles.flipped : ''}`}>
-                {/* FRONT SIDE */}
-                <div className={`${styles.flipCard} ${styles.front}`}>
-                    <h2 className="text-2xl md:text-3xl text-center font-semibold tracking-wider py-5">
-                        TIME UNTIL LAUNCH
-                    </h2>
+       
+        <div className={`${styles.timerRes} mt-14 min-h-[90vh] text-white`}>
+            
+            <div className={styles.flipCardWrapper}>
+                <div className={`${styles.flipCardInner} ${isFlipped ? styles.flipped : ''}  `}><div className={`${styles.glow}`} ></div>
+                    {/* FRONT SIDE */}
+                    <div className={`${styles.flipCard} ${styles.front}  bg-[url('../src/assets/images/ptm.jpg')] bg-cover bg-center rounded-2xl shadow-2xl`}>
+                        <h2 className={`${styles.launchTime} text-2xl md:text-3xl text-center  tracking-wider mb-6`}>
+                            TIME UNTIL LAUNCH
+                        </h2>
 
-                    <div className="flex gap-2 md:gap-6 overflow-x-hidden no-scrollbar px-4 max-w-full ">
-                        {[
-                            { value: timeLeft.days, label: 'DAYS' },
-                            { value: timeLeft.hours, label: 'HOURS' },
-                            { value: timeLeft.minutes, label: 'MINUTES' },
-                            { value: timeLeft.seconds, label: 'SECONDS' },
-                        ].map((item) => (
-                            <Timer key={item.label} value={item.value} label={item.label} />
-                        ))}
+                        <div className="flex gap-4 justify-center flex-wrap">
+                            {[{ value: timeLeft.days, label: 'DAYS' },
+                              { value: timeLeft.hours, label: 'HOURS' },
+                              { value: timeLeft.minutes, label: 'MINUTES' },
+                              { value: timeLeft.seconds, label: 'SECONDS' }].map((item) => (
+                                <Timer key={item.label} value={item.value} label={item.label} />
+                            ))}
+                        </div>
+
+                        <div className="text-center">
+                            <button
+                                className="bg-[#a632ff] text-white px-5 py-2 text-sm font-semibold rounded-full
+               shadow-[4px_4px_12px_#5c1e99,_-4px_-4px_12px_#c85cff]
+               hover:shadow-[2px_2px_6px_#5c1e99,_-3px_-3px_6px_#c85cff]
+               transition-shadow duration-300 ease-in-out focus:outline-none"
+                                onClick={() => setIsFlipped(true)}
+                            >
+                                Join the Movement →
+                            </button>
+                        </div>
                     </div>
 
-                    <div className="pt-10">
-                        <button
-                            className="bg-purple-600 hover:bg-purple-700 transition duration-300 ease-in-out px-8 py-2 rounded-full text-lg font-semibold text-white shadow-lg shadow-purple-600/80 hover:shadow-purple-700/180"
-                            onClick={() => setIsFlipped(true)}
-                        >
-                            Join the Movement →
-                        </button>
+                    {/* BACK SIDE - REGISTER FORM */}
+                    <div className={`${styles.flipCard} ${styles.back} bg-[url('../src/assets/images/ptm.jpg')] bg-cover bg-center rounded-2xl shadow-2xl`}>
+                        <h2 className="text-2xl font-bold  text-center">Register Now</h2>
+                        <form className="flex flex-col gap-3 w-full max-w-sm mx-auto">
+                            <input type="text" placeholder="Name" className={`${styles.inputBar} input-field`}/>
+                            <input type="text" placeholder="Phone" className={`${styles.inputBar} input-field`} />
+                            <input type="text" placeholder="College" className={`${styles.inputBar} input-field`} />
+                            <input type="text" placeholder="Contribution" className={`${styles.inputBar} input-field`} />
+                            <button
+                                type="submit"
+                                className="bg-green-500 hover:bg-green-700 transition px-6 py-2 rounded-full font-semibold"
+                            >
+                                Submit
+                            </button>
+                            <button
+                                type="button"
+                                className="text-sm text-purple-300 mt-2 hover:underline"
+                                onClick={() => setIsFlipped(false)}
+                            >
+                                ← Back to Countdown
+                            </button>
+                        </form>
                     </div>
-                </div>
-
-                {/* BACK SIDE - REGISTER FORM */}
-                <div className={`${styles.flipCard} ${styles.back}`}>
-                    <h2 className="text-xl font-semibold mb-4">Register Now </h2>
-                    <form className="flex flex-col gap-4 w-full max-w-md">
-                        <input type="text" placeholder="Name" className="p-2 rounded bg-white/10 text-white placeholder-white/70" />
-                        <input type="number" placeholder="Phone" className="p-2 rounded bg-white/10 text-white placeholder-white/70" />
-                        <input type="text" placeholder="Collage" className="p-2 rounded bg-white/10 text-white placeholder-white/70" />
-                      
-                        <input type="text" placeholder="Contribution" className="p-2 rounded bg-white/10 text-white placeholder-white/70" />
-                        <button
-                            type="submit"
-                            className="bg-green-600 hover:bg-green-700 transition px-8 py-2 rounded-full text-lg font-semibold text-white"
-                        >
-                            Submit
-                        </button>
-                        <button
-                            type="button"
-                            className="text-sm text-purple-400 mt-2 hover:underline"
-                            onClick={() => setIsFlipped(false)}
-                        >
-                            ← Back to Countdown
-                        </button>
-                    </form>
                 </div>
             </div>
         </div>
     );
-}
-export default CountDownTimer;
+};
 
+export default CountDownTimer;
 
 type TimerProps = {
     label: string,
     value: number
-}
+};
+
 const Timer = ({ value, label }: TimerProps) => {
     return (
-        <div key={label} className={styles.glassCard}>
-            <div className={`${styles.dropAnimation}`}></div>
-            <div className=" lg:text-6xl font-extrabold text-white">
-                {value}
+        <div className={`${styles.glassCard} flex flex-col items-center justify-center bg-white/10 rounded-lg  shadow-lg backdrop-blur-md`}>
+            <div className="text-3xl font-bold text-white">
+                {value < 10 ? `0${value}` : value}
             </div>
-            <div className="text-[.4rem]   tracking-widest text-purple-200 font-medium">
+            <div className="text-[10px] tracking-widest text-purple-200 ">
                 {label}
             </div>
         </div>
-    )
-}
+    );
+};
