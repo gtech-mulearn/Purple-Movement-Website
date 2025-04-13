@@ -140,7 +140,7 @@
 
   @font-face {
     font-family: varien;
-    src: url('../src/assets/fonts/varienRegular.ttf');
+    src: url('./varienRegular.ttf');
 }
 
   .launchTime{
