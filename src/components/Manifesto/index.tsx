@@ -1,26 +1,23 @@
 import { useState } from "react";
-import styles from './style.module.css';
+
 const Manifesto = () => {
     const [expanded, setExpanded] = useState(false);
 
     return (
-        <div className={` mt-4 h-full w-full flex justify-center items-center px-4`}>
+        <div className={` mt-4 h-full w-half flex justify-center items-start    `}>
             <div className="tracking-[0.2em] text-purple-100 w-full max-w-md space-y-3">
                 <div className="space-y-1">
-                    <h2 className={`${styles.manifestor} tracking-[0.1em] leading-tight text-3xl font-extrabold `} >
+                    <h2 className={`font-varien tracking-[0.1em] leading-tight text-3xl font-extrabold `} >
                         Manifestors
                     </h2>
-                    <div className={`${styles.cont}`}>   
-                    <div className="space-y-1">
-                        <p className="text-sm">We are the Manifestors of Change.</p>
-                        <p className="text-sm">We are not waiting for the future.</p>
-                        <p className="text-sm">
-                            We are building it—with courage, code, creativity, and clarity.
-                        </p>
-                    </div>
-  
-
-            
+                    <div className={`font-NuraNormal`}>   
+                        <div className="space-y-1">
+                            <p className="text-sm">We are the Manifestors of Change.</p>
+                            <p className="text-sm">We are not waiting for the future.</p>
+                            <p className="text-sm">
+                                We are building it—with courage, code, creativity, and clarity.
+                            </p>
+                        </div>
                         <div className="space-y-1 text-sm">
                             <p>We are the voice of a generation that refuses to settle.</p>
                             <p>We are not consumers of culture.</p>
@@ -29,50 +26,48 @@ const Manifesto = () => {
                             </p>
                             <p>We break barriers, not just for ourselves, but for every young mind daring to dream.</p>
                         </div>
-    {/* Show this part always */}
 
-    {expanded && (
-                    <>
-                        <div className="space-y-1 text-sm">
-                            <p>We believe in ecosystems that empower, not limit.</p>
-                            <p>In access, not gatekeeping.</p>
-                            <p>In bold visions, not borrowed templates.</p>
-                        </div>
 
-                        <div className="space-y-1 text-sm">
-                            <p>
-                                We are here to <span className="text-[#a632ff] font-semibold">reclaim the narrative</span>—
-                            </p>
-                            <p>To give confidence to the curious,</p>
-                            <p>Networks to the bold,</p>
-                            <p>And direction to the determined.</p>
-                        </div>
+                        {expanded && (
+                            <>
+                                <div className="space-y-1 text-sm">
+                                    <p>We believe in ecosystems that empower, not limit.</p>
+                                    <p>In access, not gatekeeping.</p>
+                                    <p>In bold visions, not borrowed templates.</p>
+                                </div>
 
-                        <div className="space-y-1">
-                            <p className="text-base font-semibold">
-                                This is <span className="text-[#a632ff]">The Purple Movement</span>.
-                            </p>
-                            <p className="text-base">A wave of youth power, purpose, and possibility.</p>
-                            <p className="text-base">A signal that change is not coming—it's already here.</p>
-                        </div>
+                                <div className="space-y-1 text-sm">
+                                    <p>
+                                        We are here to <span className="text-[#a632ff] font-semibold">reclaim the narrative</span>—
+                                    </p>
+                                    <p>To give confidence to the curious,</p>
+                                    <p>Networks to the bold,</p>
+                                    <p>And direction to the determined.</p>
+                                </div>
 
-                        <div className="space-y-1 text-sm">
-                            <p>We are the energy.</p>
-                            <p>We are the strategy.</p>
-                            <p>We are the spark.</p>
-                        </div>
+                                <div className="space-y-1">
+                                    <p className="text-base font-semibold">
+                                        This is <span className="text-[#a632ff]">The Purple Movement</span>.
+                                    </p>
+                                    <p className="text-base">A wave of youth power, purpose, and possibility.</p>
+                                    <p className="text-base">A signal that change is not coming—it's already here.</p>
+                                </div>
 
-                        <p className="text-xl font-bold text-[#a632ff]">AND IT STARTS NOW.</p>
-                    </>
-                )}</div>
+                                <div className="space-y-1 text-sm">
+                                    <p>We are the energy.</p>
+                                    <p>We are the strategy.</p>
+                                    <p>We are the spark.</p>
+                                </div>
+
+                                <p className="text-xl font-bold text-[#a632ff]">AND IT STARTS NOW.</p>
+                            </>
+                        )}
+                    </div>
 
                 {/* Toggle button */}
-                <button
-    onClick={() => setExpanded(!expanded)}
-    className="float-end underline text-white px-3 py-1 text-sm rounded-full font-serif ease-in-out focus:outline-none"
->
-    {expanded ? "Show Less " : "Read More "}
-</button>
+                <button onClick={() => setExpanded(!expanded)} className="float-end underline text-white px-3 py-1 text-sm rounded-full font-serif ease-in-out focus:outline-none">
+                    {expanded ? "Show Less " : "Read More "}
+                </button>
 
             </div>
         </div>
