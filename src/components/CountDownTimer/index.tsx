@@ -28,7 +28,7 @@ const CountDownTimer = ({ endDate }: { endDate: Date }) => {
     }, [endDate]);
 
     return (
-        <div className="w-full  md:w-1/2 text-white px-4">
+        <div className=" md:w-1/2 w-full mx-4 text-white px-4">
             <div className={styles.flipCardWrapper}>
                 <div className={`${styles.flipCardInner} ${isFlipped ? styles.flipped : ''}`}>
                     <div className={`${styles.glow}`}></div>
