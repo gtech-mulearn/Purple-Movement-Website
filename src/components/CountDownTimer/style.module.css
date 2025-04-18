@@ -109,7 +109,7 @@ font-family: varien;
   @media screen and (max-width: 768px) {
 
    .flipCardWrapper{
-    width: 70%;
+    width: 100%;
    }
 }
 .glow{
