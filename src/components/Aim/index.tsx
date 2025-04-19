@@ -18,7 +18,7 @@ function Aim() {
   ];
 
   return (
-    <div className="my-[35vh] text-white flex justify-center">
+    <div className="mt-[80vh] mb-[10vh] text-white flex justify-center">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-center gap-2 mb-16">
           <Target className="w-8 h-8 text-purple-500" />
