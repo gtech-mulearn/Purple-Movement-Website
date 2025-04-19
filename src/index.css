@@ -2,19 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
-
-
 @font-face {
-  font-family: 'NuraBold';
-  src: url('/src/assets/fonts/Nura-Bold.ttf') format('truetype');
+  font-family: "NuraBold";
+  src: url("/src/assets/fonts/Nura-Bold.ttf") format("truetype");
 }
 @font-face {
   font-family: NuraNormal;
-  src: url('/src/assets/fonts/Nura-Normal.ttf');
+  src: url("/src/assets/fonts/Nura-Normal.ttf");
 }
 @font-face {
   font-family: varien;
-  src: url('/src/assets/fonts/varienRegular.ttf');
+  src: url("/src/assets/fonts/varienRegular.ttf");
 }
 
 * {
@@ -27,12 +25,9 @@ body::-webkit-scrollbar {
   width: 4px;
 }
 
-
 body::-webkit-scrollbar-track {
   background: rgb(80, 79, 79);
-
 }
-
 
 body::-webkit-scrollbar-thumb {
   background: #323131;
