@@ -27,9 +27,9 @@
 } 
 */
 @font-face {
-    font-family: Nura;
-    src: url('../src/assets/Nura-Bold.ttf');
+  font-family: Nura;
+  src: url("../src/assets/Nura-Bold.ttf");
 }
-.PurpleMovement{
-font-family: Nura;
+.PurpleMovement {
+  font-family: Nura;
 }
