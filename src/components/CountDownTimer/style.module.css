@@ -54,6 +54,7 @@
   position: relative;
   top: 20%;
   width: 80%;
+  
   perspective: 1000px;
 }
 
@@ -70,7 +71,7 @@
   backface-visibility: hidden;
   position: absolute;
   margin: 0%;
-
+height: 40vh;
   width: 100%;
   top: 0;
   left: 0;
@@ -112,18 +113,31 @@
   filter: blur(10px);
   padding: 10px;
   width: 100%;
-  height: 45vh;
+  height: 60vh;
   background: linear-gradient(to right, #ec4899, #8b5cf6);
   box-shadow:
     0 0 20px #ec4899,
     0 0 40px #8b5cf6;
-  opacity: 0;
-  visibility: hidden;
-  transition:
-    opacity 1s ease-in-out,
-    visibility 4s ease-in-out;
+    animation: infinite 8s glow;
+    @media screen and (max-width: 468px) {
+       height: 40vh;
+      }
+    
+
 }
-.flipCardWrapper:hover .glow {
-  opacity: 1;
-  visibility: visible;
+@keyframes glow {
+  0%,
+  100% {
+    opacity: 0.2;
+    box-shadow:
+    0 0 20px #ec4899,
+    0 0 40px #8b5cf6;
+  }
+
+  50% {
+    opacity: 0.8;
+    box-shadow:
+    0 0 20px #ec4899,
+    0 0 40px #8b5cf6;
+  }
 }

@@ -28,7 +28,7 @@ const CountDownTimer = ({ endDate }: { endDate: Date }) => {
   }, [endDate]);
 
   return (
-    <div className="w-[90%] md:w-1/2 h-[400px] md:h-full mb-4 md:mb-0 text-white px-4">
+    <div className="w-[90%] md:w-1/2 h-[80vh] md:h-full mb-4 md:mb-0 text-white px-4">
       <div className={styles.flipCardWrapper}>
         <div
           className={`${styles.flipCardInner} ${isFlipped ? styles.flipped : ""}`}
@@ -36,10 +36,10 @@ const CountDownTimer = ({ endDate }: { endDate: Date }) => {
           <div className={`${styles.glow}`}></div>
           {/* FRONT SIDE */}
           <div
-            className={`${styles.flipCard} ${styles.front} bg-[url('../src/assets/images/ptm.jpg')] bg-cover bg-center rounded-2xl shadow-2xl flex flex-col content-center items-center space-y-6 sm:space-y-8 min-h-[40vh] sm:min-h-[45vh] bg-white/5`}
+            className={`${styles.flipCard} ${styles.front} bg-[url('../src/assets/images/ptm.jpg')] bg-cover bg-center rounded-2xl shadow-2xl flex flex-col content-center items-center space-y-6 sm:space-y-8  h-[40vh] md:h-[60vh] bg-white/5`}
           >
             <h2
-              className={`${styles.launchTime} text-xl sm:text-2xl md:text-3xl text-center tracking-wider mt-4 mb-4 sm:mb-6`}
+              className={`${styles.launchTime} text-xl sm:text-2xl md:text-3xl text-center tracking-wider mt-12 mb-4 sm:mb-6`}
             >
               TIME UNTIL LAUNCH
             </h2>
@@ -57,7 +57,7 @@ const CountDownTimer = ({ endDate }: { endDate: Date }) => {
 
             <div className="text-center">
               <button
-                className="bg-[#a632ff] text-white px-4 sm:px-5 py-2 text-xs sm:text-sm font-semibold rounded-full
+                className="bg-[#a632ff] text-white px-4 sm:px-5 py-2 my-12 text-xs sm:text-sm font-semibold rounded-full
                shadow-[4px_4px_12px_#5c1e99,_-4px_-4px_12px_#c85cff]
                hover:shadow-[2px_2px_6px_#5c1e99,_-3px_-3px_6px_#c85cff]
                transition-shadow duration-300 ease-in-out focus:outline-none"
@@ -70,9 +70,9 @@ const CountDownTimer = ({ endDate }: { endDate: Date }) => {
 
           {/* BACK SIDE - REGISTER FORM */}
           <div
-            className={`${styles.flipCard} ${styles.back} bg-[url('../src/assets/images/ptm.jpg')] bg-cover bg-center rounded-2xl shadow-2xl`}
+            className={`${styles.flipCard} ${styles.back} bg-[url('../src/assets/images/ptm.jpg')] bg-cover bg-center rounded-2xl shadow-2xl h-[40vh] md:h-[60vh]`}
           >
-            <h2 className="text-xl sm:text-2xl font-bold text-center">
+            <h2 className="text-xl sm:text-2xl font-bold text-center my-8">
               Register Now
             </h2>
             <form className="flex flex-col gap-2 sm:gap-3 w-full max-w-xs sm:max-w-sm mx-auto px-4">
@@ -98,13 +98,16 @@ const CountDownTimer = ({ endDate }: { endDate: Date }) => {
               />
               <button
                 type="submit"
-                className="bg-green-500 hover:bg-green-700 transition px-4 sm:px-6 py-2 rounded-full font-semibold"
+                className="bg-green-500 hover:bg-green-700 transition mx-auto mt-2 w-[40%] py-1 rounded-full font-semibold"
               >
                 Submit
               </button>
               <button
                 type="button"
-                className="text-sm text-purple-300 mt-2 hover:underline"
+                className=" text-white px-4 sm:px-5 py-2 my-4 text-xs sm:text-sm font-semibold rounded-full
+               shadow-[4px_4px_12px_#5c1e99,_-4px_-4px_12px_#c85cff]
+               hover:shadow-[2px_2px_6px_#5c1e99,_-3px_-3px_6px_#c85cff] 
+               transition-shadow duration-300 ease-in-out focus:outline-none"
                 onClick={() => setIsFlipped(false)}
               >
                 ← Back to Countdown
@@ -113,6 +116,11 @@ const CountDownTimer = ({ endDate }: { endDate: Date }) => {
           </div>
         </div>
       </div>
+      <div className="flex justify-center items-end h-[70vh] md:h-[80vh] w-[100%] md:w-[80%]">
+  <div className="bg-purple-300/50 p-[30px] rounded">
+    Count
+  </div>
+</div>
     </div>
   );
 };
