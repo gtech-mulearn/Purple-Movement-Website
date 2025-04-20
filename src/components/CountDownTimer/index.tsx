@@ -72,34 +72,17 @@ const CountDownTimer = ({ endDate }: { endDate: Date }) => {
           <div
             className={`${styles.flipCard} ${styles.back} bg-[url('../src/assets/images/ptm.jpg')] bg-cover bg-center rounded-2xl shadow-2xl h-[40vh] md:h-[60vh]`}
           >
-            <h2 className="text-xl sm:text-2xl font-bold text-center mb-1">
+            <h2 className="text-xl sm:text-2xl font-bold text-center my-4 ">
               Register Now
             </h2>
-            <form className="flex flex-col gap-2 sm:gap-3 w-full max-w-xs sm:max-w-sm mx-auto px-4">
-              <input
-                type="text"
-                placeholder="Name"
-                className={`${styles.inputBar} `}
-              />
-              <input
-                type="text"
-                placeholder="Phone"
-                className={`${styles.inputBar} `}
-              />
-              <input
-                type="text"
-                placeholder="College"
-                className={`${styles.inputBar} `}
-              />
-              <input
-                type="text"
-                placeholder="Contribution"
-                className={`${styles.inputBar} `}
-              />
-              <button
-                type="submit"
-                className="bg-green-500 hover:bg-green-700 transition mx-auto mt-2 w-[40%]  rounded-full font-semibold"
-              >
+            <form className="flex flex-col gap-2 sm:gap-3 w-full max-w-xs sm:max-w-sm mx-auto px-4" onSubmit={(e) => { e.preventDefault(); storeRecord(); }}>
+              <input required type="text" pattern="[a-zA-Z\s]+" title="Name can only be Alphabets"  placeholder="Full Name" id="name" className="p-2 rounded-md bg-white/10 text-white placeholder-white/70" />
+              <input required type="tel"  pattern="[0-9]{11}" title="Phone number should be 10 digits long"  placeholder="Phone Number" id="phone" className="p-2 rounded bg-white/10 text-white placeholder-white/70" />
+              <input required type="email"  placeholder="Email" id="email" className="p-2 rounded bg-white/10 text-white placeholder-white/70" />
+              <input required type="text" placeholder="College" id="college" className="p-2 rounded bg-white/10 text-white placeholder-white/70"  />
+              <input required type="text" placeholder="Contribution" id="contribution" className="p-2 rounded bg-white/10 text-white placeholder-white/70"  />
+                
+              <button type="submit" className="bg-green-500 hover:bg-green-700 transition mx-auto mt-2 w-[40%]  rounded-full font-semibold" >
                 Submit
               </button>
               <button
@@ -143,4 +126,45 @@ const Timer = ({ value, label }: TimerProps) => {
       </div>
     </div>
   );
+};
+
+
+import { collection, addDoc } from "firebase/firestore"; 
+// @ts-ignore
+import { db } from "../../firebase.js"; 
+import firebase from "firebase/compat/app";
+
+
+const storeRecord = async () => {
+    try {
+        const name = document.getElementById("name") as HTMLInputElement;
+        const phone = document.getElementById("phone") as HTMLInputElement;
+        const email = document.getElementById("email") as HTMLInputElement;
+        const college = document.getElementById("college") as HTMLInputElement;
+        const contribution = document.getElementById("contribution") as HTMLInputElement;
+      
+        const record = {
+            name: name.value,
+            phone: phone.value,
+            email: email.value,
+            college: college.value,
+            contribution: contribution.value,
+            timestamp: new Date().toLocaleString(),
+        };
+
+        console.log("Document with Data: " + JSON.stringify(record));
+        const docRef = await addDoc(collection(db, "FormData"), record);
+        // console.log("Document written with ID:", docRef.id);
+
+        alert("Data submitted successfully!");
+        setTimeout(() => {
+            window.location.href = '/';
+        }, 2000);
+    } catch (error) {
+        if (error instanceof Error) {
+            console.error("Error storing record:", error.message);
+        } else {
+            console.error("An unknown error occurred:", error);
+        }
+    }
 };
