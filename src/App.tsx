@@ -7,20 +7,20 @@ function App() {
 
   return (
     <>
-        <div className="text-white bg-[url('../src/assets/images/ptm.jpg')] bg-cover overflow-hidden min-h-[175vh]">
-      <div className=" md:w-full mx-auto w-4/5 flex items-center justify-center">
-        <h1 className="font-NuraBold text-4xl md:text-6xl text-center font-extrabold text-[#8737d7] tracking-widest uppercase mt-5">
-          The Purple Movement
-        </h1>
-      </div>
+      <div className="text-white bg-[url('../src/assets/images/ptm.jpg')] bg-cover overflow-hidden ">
+        <div className=" md:w-full mx-auto w-4/5 flex items-center justify-center">
+          <h1 className="font-NuraBold text-4xl md:text-6xl text-center font-extrabold text-[#8737d7] tracking-widest uppercase mt-8">
+            The Purple Movement
+          </h1>
+        </div>
 
-      {/* Main Content  */}
-      <div className=" w-full flex flex-col-reverse items-center md:mx-auto md:flex-row md:mt-24 gap-4 md:justify-between md:items-start">
-        <Manifesto />
-        <CountDownTimer endDate={endDate} />
+        {/* Main Content  */}
+        <div className=" w-full flex flex-col-reverse items-center md:mx-auto md:flex-row mt-[-4em] md:mt-24 gap-4 md:justify-between md:items-start">
+          <Manifesto />
+          <CountDownTimer endDate={endDate} />
+        </div>
+          <Aim/>
       </div>
-      <Aim/>
-    </div>
    
     </>
   
