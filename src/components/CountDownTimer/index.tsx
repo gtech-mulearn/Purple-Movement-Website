@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import styles from "./style.module.css";
+import Counter from "../Counter";
 
 const CountDownTimer = ({ endDate }: { endDate: Date }) => {
   const calculateTimeLeft = () => {
@@ -19,6 +20,7 @@ const CountDownTimer = ({ endDate }: { endDate: Date }) => {
 
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
   const [isFlipped, setIsFlipped] = useState(false);
+  const [isMarginIncreased, setIsMarginIncreased] = useState(false); // State for margin toggle
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -28,23 +30,21 @@ const CountDownTimer = ({ endDate }: { endDate: Date }) => {
   }, [endDate]);
 
   return (
-    <div className="w-[90%] md:w-1/2 h-[80vh] md:h-full mb-4 md:mb-0 text-white px-4">
-      <div className={styles.flipCardWrapper}>
+    <div className="w-[90%] md:w-1/2 h-[80vh] md:h-full mb-4 md:mb-0 text-white px-4 ">
+      <div className="relative top-[20%] w-[100%] md:w-[80%] perspective-[1000px] ">
         <div
-          className={`${styles.flipCardInner} ${isFlipped ? styles.flipped : ""}`}
+          className={`${styles.flipCardInner} ${
+            isFlipped ? styles.flipped : ""
+          } `}
         >
           <div className={`${styles.glow}`}></div>
           {/* FRONT SIDE */}
-          <div
-            className={`${styles.flipCard} ${styles.front} bg-[url('../src/assets/images/ptm.jpg')] bg-cover bg-center rounded-2xl shadow-2xl flex flex-col content-center items-center space-y-6 sm:space-y-8  h-[40vh] md:h-[60vh] `}
-          >
-            <h2
-              className={`${styles.launchTime} text-xl sm:text-2xl md:text-3xl text-center tracking-wider mt-6 mb-2 sm:mb-6`}
-            >
+          <div className="w-full h-[40vh] md:h-[64vh] bg-[url('../src/assets/images/ptm.jpg')] bg-cover rounded-2xl shadow-2xl flex flex-col justify-center space-y-8 [transform:rotateY(0deg)] ">
+            <h2 className="font-varien text-2xl md:text-4xl lg:text-5xl text-center tracking-wider mt-6 mb-2 sm:mb-6">
               TIME UNTIL LAUNCH
             </h2>
 
-            <div className="flex gap-2 sm:gap-4 justify-center flex-wrap">
+            <div className="flex gap-2 justify-center flex-wrap ">
               {[
                 { value: timeLeft.days, label: "DAYS" },
                 { value: timeLeft.hours, label: "HOURS" },
@@ -57,11 +57,14 @@ const CountDownTimer = ({ endDate }: { endDate: Date }) => {
 
             <div className="text-center">
               <button
-                className="bg-[#a632ff] text-white px-4 sm:px-5 py-2 my-1 text-xs sm:text-sm font-semibold rounded-full
+                className="bg-[#a632ff] text-white px-4 md:px-6 py-3 md:py-3 my-1 text-sm md:text-xl font-semibold rounded-full
                shadow-[4px_4px_12px_#5c1e99,_-4px_-4px_12px_#c85cff]
                hover:shadow-[2px_2px_6px_#5c1e99,_-3px_-3px_6px_#c85cff]
                transition-shadow duration-300 ease-in-out focus:outline-none"
-                onClick={() => setIsFlipped(true)}
+                onClick={() => {
+                  setIsFlipped(true);
+                  setIsMarginIncreased(true); // Add margin
+                }}
               >
                 Join the Movement →
               </button>
@@ -70,40 +73,94 @@ const CountDownTimer = ({ endDate }: { endDate: Date }) => {
 
           {/* BACK SIDE - REGISTER FORM */}
           <div
-            className={`${styles.flipCard} ${styles.back} bg-[url('../src/assets/images/ptm.jpg')] bg-cover bg-center rounded-2xl shadow-2xl h-[40vh] md:h-[60vh]`}
+            style={{
+              transform: "rotateY(180deg)",
+              backfaceVisibility: "hidden",
+            }}
+            className="absolute top-0 left-0 w-full h-[50vh] md:h-[64vh] p-2.5 bg-[url('../src/assets/images/ptm.jpg')] bg-cover bg-center rounded-2xl shadow-2xl"
           >
             <h2 className="text-xl sm:text-2xl font-bold text-center my-4 ">
               Register Now
             </h2>
-            <form className="flex flex-col gap-2 sm:gap-3 w-full max-w-xs sm:max-w-sm mx-auto px-4" onSubmit={(e) => { e.preventDefault(); storeRecord(); }}>
-              <input required type="text" pattern="[a-zA-Z\s]+" title="Name can only be Alphabets"  placeholder="Full Name" id="name" className="p-2 rounded-md bg-white/10 text-white placeholder-white/70" />
-              <input required type="tel"  pattern="[0-9]{11}" title="Phone number should be 10 digits long"  placeholder="Phone Number" id="phone" className="p-2 rounded bg-white/10 text-white placeholder-white/70" />
-              <input required type="email"  placeholder="Email" id="email" className="p-2 rounded bg-white/10 text-white placeholder-white/70" />
-              <input required type="text" placeholder="College" id="college" className="p-2 rounded bg-white/10 text-white placeholder-white/70"  />
-              <input required type="text" placeholder="Contribution" id="contribution" className="p-2 rounded bg-white/10 text-white placeholder-white/70"  />
-                
-              <button type="submit" className="bg-green-500 hover:bg-green-700 transition mx-auto mt-2 w-[40%]  rounded-full font-semibold" >
+            <form
+              className="flex flex-col gap-2 sm:gap-3 w-full max-w-md mx-auto px-4"
+              onSubmit={(e) => {
+                e.preventDefault();
+                storeRecord();
+                setIsMarginIncreased(false); // Remove margin on submit
+              }}
+            >
+              <input
+                required
+                type="text"
+                pattern="[a-zA-Z\s]+"
+                title="Name can only be Alphabets"
+                placeholder="Full Name"
+                id="name"
+                className="p-2 rounded-md bg-white/10 text-white placeholder-white/70"
+              />
+              <input
+                required
+                type="tel"
+                pattern="[0-9]{11}"
+                title="Phone number should be 10 digits long"
+                placeholder="Phone Number"
+                id="phone"
+                className="p-2 rounded bg-white/10 text-white placeholder-white/70"
+              />
+              <input
+                required
+                type="email"
+                placeholder="Email"
+                id="email"
+                className="p-2 rounded bg-white/10 text-white placeholder-white/70"
+              />
+              <input
+                required
+                type="text"
+                placeholder="College"
+                id="college"
+                className="p-2 rounded bg-white/10 text-white placeholder-white/70"
+              />
+              <input
+                required
+                type="text"
+                placeholder="Contribution"
+                id="contribution"
+                className="p-2 rounded bg-white/10 text-white placeholder-white/70"
+              />
+
+              <button
+                type="submit"
+                className="bg-green-500 hover:bg-green-700 transition mx-auto my-1 w-[50%] h-10 lg:h-10 rounded-full font-semibold text-xl"
+              >
                 Submit
               </button>
               <button
                 type="button"
-                className=" text-white px-4 sm:px-5 py-1 my-1 text-xs sm:text-sm font-semibold rounded-full
+                className=" self-end mr-[-2rem] md:self-end md:mr-[-4rem] text-white w-half md:w-1/2 px-4 py-2 lg:py-2 text-xs lg:text-base  font-semibold rounded-full
                shadow-[4px_4px_12px_#5c1e99,_-4px_-4px_12px_#c85cff]
                hover:shadow-[2px_2px_6px_#5c1e99,_-3px_-3px_6px_#c85cff] 
                transition-shadow duration-300 ease-in-out focus:outline-none"
-                onClick={() => setIsFlipped(false)}
+                onClick={() => {
+                  setIsFlipped(false);
+                  setIsMarginIncreased(false); // Remove margin on back
+                }}
               >
                 ← Back to Countdown
               </button>
             </form>
           </div>
         </div>
+        {/* Counter */}
+        <div style={{ transition: "margin-top 0.5s ease-in-out"}}
+          className={`flex self-start justify-center items-center items-end w-full bg-purple-900 px-4 py-2 rounded-xl md:rounded-2xl ${
+            isMarginIncreased ? "mt-[6rem] md:mt-12" : "mt-12" 
+          }`}
+        >
+          <Counter />
+        </div>
       </div>
-      <div className="flex justify-center mt-[15px] items-end h-[70vh] md:h-[80vh] w-[100%] md:w-[80%]">
-  <div className="bg-purple-300/50 p-[30px] rounded">
-    Count
-  </div>
-</div>
     </div>
   );
 };
@@ -117,23 +174,20 @@ type TimerProps = {
 
 const Timer = ({ value, label }: TimerProps) => {
   return (
-    <div className="border border-white/20 backdrop-blur-3xl rounded-xl p-[2.5rem_1.7rem] w-[40px] h-[40px] animate-slowPulse gap-4 flex flex-col items-center justify-center bg-white/10 rounded-lg  shadow-lg backdrop-blur-md">
-      <div className="text-[1.5rem] font-bold text-white">
+    <div className="border border-white/20 backdrop-blur-3xl rounded-xl p-[2.5rem_1.8rem] w-[40px] h-[40px] md:w-20 md:h-20 lg:w-28 lg:h-28 animate-slowPulse gap-4 flex flex-col items-center justify-center bg-white/10 rounded-lg  shadow-lg backdrop-blur-md">
+      <div className="text-3xl md:text-3xl lg:text-5xl font-bold text-white">
         {value < 10 ? `0${value}` : value}
       </div>
-      <div className="text-[10px] tracking-widest text-purple-200 ">
+      <div className="text-[10px] md:text-sm tracking-widest text-purple-200 ">
         {label}
       </div>
     </div>
   );
 };
 
-
 import { collection, addDoc } from "firebase/firestore"; 
 // @ts-ignore
 import { db } from "../../firebase.js"; 
-import firebase from "firebase/compat/app";
-
 
 const storeRecord = async () => {
     try {
@@ -153,7 +207,8 @@ const storeRecord = async () => {
         };
 
         console.log("Document with Data: " + JSON.stringify(record));
-        const docRef = await addDoc(collection(db, "FormData"), record);
+        await addDoc(collection(db, "FormData"), record);
+        // const docRef = await addDoc(collection(db, "FormData"), record);
         // console.log("Document written with ID:", docRef.id);
 
         alert("Data submitted successfully!");
