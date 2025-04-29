@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 
 const Manifesto = () => {
@@ -5,15 +6,17 @@ const Manifesto = () => {
 
   return (
     <div
-      className={`md:h-full md:w-1/2 h-[450px] w-[90%] flex justify-center items-start`}
+      className={` mt-4 md:w-1/2 h-[450px] w-[90%] flex justify-center items-start ${
+    expanded ? 'mb-[100vh] md:mb-[50vh]' : 'mb-10 md:mb-[50vh]'
+  }`}
     >
       <div className="tracking-[0.2em] text-purple-100 w-full max-w-md space-y-3">
         <div className="space-y-1">
-           <center><h2
-            className={`font-varien tracking-[0.1em] leading-tight text-4xl font-extrabold mb-4`}
+          <h2
+            className={`font-varien tracking-[0.1em] leading-tight text-3xl font-extrabold`}
           >
             Manifestors
-          </h2></center>
+          </h2>
           <div className={`font-NuraNormal`}>
             <div className="space-y-1">
               <p className="text-sm">We are the Manifestors of Change.</p>
@@ -86,12 +89,13 @@ const Manifesto = () => {
           </div>
 
           {/* Toggle button */}
-          <button
-            onClick={() => setExpanded(!expanded)}
-            className="float-end underline text-white px-3 py-1 text-sm rounded-full font-serif ease-in-out focus:outline-none"
-          >
-            {expanded ? "Show Less " : "Read More "}
-          </button>
+              <button
+        onClick={() => setExpanded(!expanded)}
+        className={`float-end underline text-white px-3 py-1 text-sm rounded-full font-serif ease-in-out focus:outline-none transition-all duration-300`}
+      >
+        {expanded ? "Show Less" : "Read More"}
+      </button>
+
         </div>
       </div>
     </div>

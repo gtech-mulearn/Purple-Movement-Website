@@ -39,12 +39,12 @@ const CountDownTimer = ({ endDate }: { endDate: Date }) => {
         >
           <div className={`${styles.glow}`}></div>
           {/* FRONT SIDE */}
-          <div className="w-full h-[40vh] md:h-[64vh] bg-[url('../src/assets/images/ptm.jpg')] bg-cover rounded-2xl shadow-2xl flex flex-col justify-center space-y-8 [transform:rotateY(0deg)] ">
-            <h2 className="font-varien text-2xl md:text-4xl lg:text-5xl text-center tracking-wider mt-6 mb-2 sm:mb-6">
+          <div className="w-full h-[40vh] md:h-[64vh] bg-[url('../src/assets/images/ptm.jpg')] bg-cover rounded-2xl shadow-2xl flex flex-col justify-center md:space-y-8 space-y-5 [transform:rotateY(0deg)] ">
+            <h2 className="font-varien text-[20px] md:text-4xl lg:text-5xl text-center tracking-wider mt-2 mb-2 ">
               TIME UNTIL LAUNCH
             </h2>
 
-            <div className="flex gap-2 justify-center flex-wrap ">
+            <div className="flex gap-1 md:gap-2 justify-center flex-wrap ">
               {[
                 { value: timeLeft.days, label: "DAYS" },
                 { value: timeLeft.hours, label: "HOURS" },
@@ -57,7 +57,7 @@ const CountDownTimer = ({ endDate }: { endDate: Date }) => {
 
             <div className="text-center">
               <button
-                className="bg-[#a632ff] text-white px-4 md:px-6 py-3 md:py-3 my-1 text-sm md:text-xl font-semibold rounded-full
+                className="bg-[#a632ff] text-white px-4 md:px-6 py-1 md:py-3 my-1 text-sm md:text-xl font-semibold rounded-lg
                shadow-[4px_4px_12px_#5c1e99,_-4px_-4px_12px_#c85cff]
                hover:shadow-[2px_2px_6px_#5c1e99,_-3px_-3px_6px_#c85cff]
                transition-shadow duration-300 ease-in-out focus:outline-none"
@@ -97,7 +97,7 @@ const CountDownTimer = ({ endDate }: { endDate: Date }) => {
                 title="Name can only be Alphabets"
                 placeholder="Full Name"
                 id="name"
-                className="p-2 rounded-md bg-white/10 text-white placeholder-white/70"
+                className="md:p-2 px-3 py-1 text-[12px] rounded-md bg-white/10 text-white placeholder-white/70"
               />
               <input
                 required
@@ -106,42 +106,40 @@ const CountDownTimer = ({ endDate }: { endDate: Date }) => {
                 title="Phone number should be 10 digits long"
                 placeholder="Phone Number"
                 id="phone"
-                className="p-2 rounded bg-white/10 text-white placeholder-white/70"
+                className="md:p-2 px-3 py-1 text-[12px] rounded bg-white/10 text-white placeholder-white/70"
               />
               <input
                 required
                 type="email"
                 placeholder="Email"
                 id="email"
-                className="p-2 rounded bg-white/10 text-white placeholder-white/70"
+                className="md:p-2 px-3 py-1 text-[12px] rounded bg-white/10 text-white placeholder-white/70"
               />
               <input
                 required
                 type="text"
                 placeholder="College"
                 id="college"
-                className="p-2 rounded bg-white/10 text-white placeholder-white/70"
+                className="md:p-2 px-3 py-1 text-[12px] rounded bg-white/10 text-white placeholder-white/70"
               />
               <input
                 required
                 type="text"
                 placeholder="Contribution"
                 id="contribution"
-                className="p-2 rounded bg-white/10 text-white placeholder-white/70"
+                className="md:p-2 px-3 py-1 text-[12px] rounded bg-white/10 text-white placeholder-white/70"
               />
 
               <button
                 type="submit"
-                className="bg-green-500 hover:bg-green-700 transition mx-auto my-1 w-[50%] h-10 lg:h-10 rounded-full font-semibold text-xl"
+                className="bg-green-500 hover:bg-green-700 transition mx-auto my-1 w-[40%]  lg:h-10 rounded-lg font-medium text-[18px] md:text-xl"
               >
                 Submit
               </button>
               <button
                 type="button"
-                className=" self-end mr-[-2rem] md:self-end md:mr-[-4rem] text-white w-half md:w-1/2 px-4 py-2 lg:py-2 text-xs lg:text-base  font-semibold rounded-full
-               shadow-[4px_4px_12px_#5c1e99,_-4px_-4px_12px_#c85cff]
-               hover:shadow-[2px_2px_6px_#5c1e99,_-3px_-3px_6px_#c85cff] 
-               transition-shadow duration-300 ease-in-out focus:outline-none"
+                className=" self-end mr-[-1rem] md:self-end md:mr-[-4rem] text-white w-half md:w-1/2 px-2 py-2 lg:py-2 text-xs lg:text-base  font-semibold rounded-full mt-4
+              "
                 onClick={() => {
                   setIsFlipped(false);
                   setIsMarginIncreased(false); // Remove margin on back
@@ -174,11 +172,11 @@ type TimerProps = {
 
 const Timer = ({ value, label }: TimerProps) => {
   return (
-    <div className="border border-white/20 backdrop-blur-3xl rounded-xl p-[2.5rem_1.8rem] w-[40px] h-[40px] md:w-20 md:h-20 lg:w-28 lg:h-28 animate-slowPulse gap-4 flex flex-col items-center justify-center bg-white/10 rounded-lg  shadow-lg backdrop-blur-md">
-      <div className="text-3xl md:text-3xl lg:text-5xl font-bold text-white">
+    <div className="border border-white/20 backdrop-blur-3xl rounded-xl p-[2.5rem_1.5rem] md:p-[2.5rem_1.8rem] w-[40px] h-[20px]  md:w-20 md:h-20 lg:w-28 lg:h-28 animate-slowPulse gap-4 flex flex-col items-center justify-center bg-white/10 rounded-lg  shadow-lg backdrop-blur-md">
+      <div className="text-[20px] md:text-3xl lg:text-5xl font-bold text-white">
         {value < 10 ? `0${value}` : value}
       </div>
-      <div className="text-[10px] md:text-sm tracking-widest text-purple-200 ">
+      <div className="text-[8px] md:text-sm tracking-widest text-purple-200 ">
         {label}
       </div>
     </div>
