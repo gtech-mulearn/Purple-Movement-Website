@@ -102,7 +102,7 @@ const CountDownTimer = ({ endDate }: { endDate: Date }) => {
               <input
                 required
                 type="tel"
-                pattern="[0-9]{11}"
+                pattern="[0-9]{10}"
                 title="Phone number should be 10 digits long"
                 placeholder="Phone Number"
                 id="phone"
