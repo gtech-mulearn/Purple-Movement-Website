@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import styles from '../CountDownTimer/style.module.css';
 import { collection, getDocs } from "firebase/firestore";
 // @ts-ignore
 import { db } from "../../firebase.js";

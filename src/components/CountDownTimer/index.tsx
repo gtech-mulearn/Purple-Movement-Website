@@ -3,6 +3,8 @@ import styles from "./style.module.css";
 import Counter from "../Counter";
 
 const CountDownTimer = ({ endDate }: { endDate: Date }) => {
+
+
   const calculateTimeLeft = () => {
     const difference = endDate.getTime() - new Date().getTime();
     let timeLeft = { days: 0, hours: 0, minutes: 0, seconds: 0 };
@@ -86,7 +88,7 @@ const CountDownTimer = ({ endDate }: { endDate: Date }) => {
               className="flex flex-col gap-2 sm:gap-3 w-full max-w-md mx-auto px-4"
               onSubmit={(e) => {
                 e.preventDefault();
-                storeRecord();
+                checkIfEmailExists();
                 setIsMarginIncreased(false); // Remove margin on submit
               }}
             >
@@ -138,8 +140,7 @@ const CountDownTimer = ({ endDate }: { endDate: Date }) => {
               </button>
               <button
                 type="button"
-                className=" self-end mr-[-1rem] md:self-end md:mr-[-4rem] text-white w-half md:w-1/2 px-2 py-2 lg:py-2 text-xs lg:text-base  font-semibold rounded-full mt-4
-              "
+                className=" self-end mr-[-1rem] md:self-end md:mr-[-4rem] text-white w-half md:w-1/2 px-2 py-2 lg:py-2 text-xs lg:text-base  font-semibold rounded-full mt-4"
                 onClick={() => {
                   setIsFlipped(false);
                   setIsMarginIncreased(false); // Remove margin on back
@@ -150,12 +151,12 @@ const CountDownTimer = ({ endDate }: { endDate: Date }) => {
             </form>
           </div>
         </div>
+
         {/* Counter */}
         <div style={{ transition: "margin-top 0.5s ease-in-out"}}
           className={`flex self-start justify-center items-center items-end w-full bg-purple-900 px-4 py-2 rounded-xl md:rounded-2xl ${
             isMarginIncreased ? "mt-[6rem] md:mt-12" : "mt-12" 
-          }`}
-        >
+          }`} >
           <Counter />
         </div>
       </div>
@@ -183,9 +184,33 @@ const Timer = ({ value, label }: TimerProps) => {
   );
 };
 
-import { collection, addDoc } from "firebase/firestore"; 
+import { collection, query, where, getDocs, addDoc } from "firebase/firestore"; 
 // @ts-ignore
 import { db } from "../../firebase.js"; 
+
+async function checkIfEmailExists() {
+  const email = document.getElementById("email") as HTMLInputElement ;
+  if (!email.value) {
+    console.error("Email input not found.");
+    return;
+  }
+  const formDataRef = collection(db, "FormData");
+  const q = query(formDataRef, where("email", "==", email.value)); // Use the email value here
+
+  try {
+    const querySnapshot = await getDocs(q);
+
+    if (!querySnapshot.empty) {
+      alert("✅ Email exists in Firestore.");
+      return true;
+    } else {
+      alert("❌ Email not found.");
+      await storeRecord();
+    }
+  } catch (error) {
+    console.error("Error querying Firestore:", error);
+  }
+}
 
 const storeRecord = async () => {
     try {
@@ -212,7 +237,7 @@ const storeRecord = async () => {
         alert("Data submitted successfully!");
         setTimeout(() => {
             window.location.href = '/';
-        }, 2000);
+        }, 1000);
     } catch (error) {
         if (error instanceof Error) {
             console.error("Error storing record:", error.message);
