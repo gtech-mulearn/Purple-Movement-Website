@@ -21,7 +21,7 @@ useEffect(() => {
 
 return (
     <>
-        <div className={styles.glassCard} style={{ marginTop: '0rem' }}>
+        <div className={`{styles.glassCard}`} style={{ marginTop: '0rem' }}>
             <div className="text-white text-lg md:text-xl font-semibold">
                 {/* Be a part the of this movement, along with */}
                 Join with us and be a part of the change. 
