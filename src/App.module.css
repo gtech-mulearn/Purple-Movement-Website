@@ -13,10 +13,10 @@
 .pulseColor {
     animation: pulseColor 10s ease-in-out infinite;
 } */
-.pulseColor{
-    background: #0a0519; /* deep base color */
+/* .pulseColor{
+    background: #0a0519;
     background-image: 
-      radial-gradient(circle at 20% 20%, rgba(61, 3, 103, 0.964), transparent 40%),
+      radial-gradient(circle at 20% 20%, rgba(27, 5, 42, 0.964), transparent 40%),
       radial-gradient(circle at 80% 25%, rgba(132, 0, 255, 0.15), transparent 45%),
       radial-gradient(circle at 70% 80%, rgba(255, 0, 128, 0.1), transparent 50%);
     background-repeat: no-repeat;
@@ -24,4 +24,12 @@
     height: 100%;
     margin: 0;
     
+} 
+*/
+@font-face {
+  font-family: Nura;
+  src: url("../src/assets/Nura-Bold.ttf");
+}
+.PurpleMovement {
+  font-family: Nura;
 }
