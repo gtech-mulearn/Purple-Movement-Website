@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import styles from '../CountDownTimer/style.module.css';
 import { collection, getDocs } from "firebase/firestore";
 // @ts-ignore
 import { db } from "../../firebase.js";
@@ -22,11 +21,11 @@ useEffect(() => {
 return (
     <>
         <div className={`{styles.glassCard}`} style={{ marginTop: '0rem' }}>
-            <div className="text-white text-lg md:text-xl font-semibold">
+            <div className="text-white text-lg md:text-xl font-semibold text-center">
                 {/* Be a part the of this movement, along with */}
                 Join with us and be a part of the change. 
             </div>
-            <div className="flex gap-3 text-4xl md:text-6xl font-extrabold text-white mt-2">
+            <div className="flex gap-3 text-4xl md:text-6xl font-extrabold text-white mt-2 justify-center">
                 {totalCount } <span className="text-2xl self-center"> + Initiators </span>
             </div>
         </div>

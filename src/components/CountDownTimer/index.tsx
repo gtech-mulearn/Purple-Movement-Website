@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import styles from "./style.module.css";
 import Counter from "../Counter";
+import PopupCard from "../PopUpCard";
 
 const CountDownTimer = ({ endDate }: { endDate: Date }) => {
+
   const calculateTimeLeft = () => {
     const difference = endDate.getTime() - new Date().getTime();
     let timeLeft = { days: 0, hours: 0, minutes: 0, seconds: 0 };
@@ -29,15 +31,70 @@ const CountDownTimer = ({ endDate }: { endDate: Date }) => {
     return () => clearInterval(timer);
   }, [endDate]);
 
+
+  // popupcard 
+const [PopUpCard, setPopUpCard] = useState(false); 
+const [popupContent, setPopupContent] = useState({ title: "", message: "" }); 
+
+async function checkIfEmailExists() {
+  const email = document.getElementById("email") as HTMLInputElement ;
+  if (!email.value) {
+    console.error("Email input not found.");
+    return;
+  }
+  const formDataRef = collection(db, "FormData");
+  const q = query(formDataRef, where("email", "==", email.value)); // Use the email value here
+
+  try {
+    const querySnapshot = await getDocs(q);
+
+    if (!querySnapshot.empty) {
+      console.log("Email exists in Firestore:", email.value);
+      setPopupContent({
+        title: "Email Exists",
+        message: `Your are already part of the movement!`,
+      });
+      setPopUpCard(true);
+      setTimeout(() => {
+            window.location.href = '/';
+        }, 2000);
+    } 
+    else {
+      await storeRecord();
+      setPopupContent({
+        title: "Success",
+        message: "Your registration was successful!",
+      });
+      setPopUpCard(true); 
+      setTimeout(() => {
+        window.location.href = '/';
+      }, 2000);
+    }
+
+  } 
+  catch (error) {
+    setPopupContent({
+      title: "Error",
+      message: "An error occurred while checking the email.",
+    });
+    setPopUpCard(true); 
+    setTimeout(() => {
+      window.location.href = '/';
+    }, 2000);
+    console.error("Error querying Firestore:", error);
+  }
+}
+
+
   return (
     <div className="w-[90%] md:w-1/2 h-[80vh] md:h-full mb-4 md:mb-0 text-white px-4 ">
+      {/* PopUp Card */}
+      { PopUpCard && <PopupCard title={popupContent.title} message={popupContent.message} onClose={() => setPopUpCard(false)} />}
+      
       <div className="relative top-[20%] w-[100%] md:w-[80%] perspective-[1000px] ">
-        <div
-          className={`${styles.flipCardInner} ${
-            isFlipped ? styles.flipped : ""
-          } `}
-        >
+        <div className={`${styles.flipCardInner} ${ isFlipped ? styles.flipped : "" } `} >    
           <div className={`${styles.glow}`}></div>
+          
           {/* FRONT SIDE */}
           <div className="w-full h-[40vh] md:h-[64vh] bg-[url('../src/assets/images/ptm.jpg')] bg-cover rounded-2xl shadow-2xl flex flex-col justify-center md:space-y-8 space-y-5 [transform:rotateY(0deg)] ">
             <h2 className="font-varien text-[20px] md:text-4xl lg:text-5xl text-center tracking-wider mt-2 mb-2 ">
@@ -82,11 +139,12 @@ const CountDownTimer = ({ endDate }: { endDate: Date }) => {
             <h2 className="text-xl sm:text-2xl font-bold text-center my-4 ">
               Register Now
             </h2>
+
             <form
               className="flex flex-col gap-2 sm:gap-3 w-full max-w-md mx-auto px-4"
               onSubmit={(e) => {
                 e.preventDefault();
-                storeRecord();
+                checkIfEmailExists();
                 setIsMarginIncreased(false); // Remove margin on submit
               }}
             >
@@ -138,8 +196,7 @@ const CountDownTimer = ({ endDate }: { endDate: Date }) => {
               </button>
               <button
                 type="button"
-                className=" self-end mr-[-1rem] md:self-end md:mr-[-4rem] text-white w-half md:w-1/2 px-2 py-2 lg:py-2 text-xs lg:text-base  font-semibold rounded-full mt-4
-              "
+                className=" self-end md:mt-4 mr-[-1rem] md:mr-[-4rem] text-white w-half md:w-1/2 px-2 py-2 lg:py-2 text-xs lg:text-base  font-semibold rounded-full"
                 onClick={() => {
                   setIsFlipped(false);
                   setIsMarginIncreased(false); // Remove margin on back
@@ -150,12 +207,12 @@ const CountDownTimer = ({ endDate }: { endDate: Date }) => {
             </form>
           </div>
         </div>
+
         {/* Counter */}
         <div style={{ transition: "margin-top 0.5s ease-in-out"}}
           className={`flex self-start justify-center items-center items-end w-full bg-purple-900 px-4 py-2 rounded-xl md:rounded-2xl ${
             isMarginIncreased ? "mt-[6rem] md:mt-12" : "mt-12" 
-          }`}
-        >
+          }`} >
           <Counter />
         </div>
       </div>
@@ -183,9 +240,12 @@ const Timer = ({ value, label }: TimerProps) => {
   );
 };
 
-import { collection, addDoc } from "firebase/firestore"; 
+import { collection, query, where, getDocs, addDoc } from "firebase/firestore"; 
 // @ts-ignore
 import { db } from "../../firebase.js"; 
+
+
+
 
 const storeRecord = async () => {
     try {
@@ -208,11 +268,7 @@ const storeRecord = async () => {
         await addDoc(collection(db, "FormData"), record);
         // const docRef = await addDoc(collection(db, "FormData"), record);
         // console.log("Document written with ID:", docRef.id);
-
-        alert("Data submitted successfully!");
-        setTimeout(() => {
-            window.location.href = '/';
-        }, 2000);
+        
     } catch (error) {
         if (error instanceof Error) {
             console.error("Error storing record:", error.message);
