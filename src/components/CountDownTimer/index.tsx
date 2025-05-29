@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
-import styles from './style.module.css'
-const CountDownTimer = ({ endDate }: { endDate: Date }) => {
+import styles from './style.module.css';
+
+const CountDownTimer = () => {
+    const endDate = new Date('2025-06-28T00:00:00');
+
     const calculateTimeLeft = () => {
         const difference = endDate.getTime() - new Date().getTime();
         let timeLeft = { days: 0, hours: 0, minutes: 0, seconds: 0 };
@@ -24,7 +27,7 @@ const CountDownTimer = ({ endDate }: { endDate: Date }) => {
         }, 1000);
 
         return () => clearInterval(timer);
-    }, [endDate]);
+    }, []);
 
     const [isFlipped, setIsFlipped] = useState(false);
 
@@ -65,7 +68,6 @@ const CountDownTimer = ({ endDate }: { endDate: Date }) => {
                         <input type="text" placeholder="Name" className="p-2 rounded bg-white/10 text-white placeholder-white/70" />
                         <input type="number" placeholder="Phone" className="p-2 rounded bg-white/10 text-white placeholder-white/70" />
                         <input type="text" placeholder="Collage" className="p-2 rounded bg-white/10 text-white placeholder-white/70" />
-                      
                         <input type="text" placeholder="Contribution" className="p-2 rounded bg-white/10 text-white placeholder-white/70" />
                         <button
                             type="submit"
@@ -85,24 +87,26 @@ const CountDownTimer = ({ endDate }: { endDate: Date }) => {
             </div>
         </div>
     );
-}
+};
+
 export default CountDownTimer;
 
 
 type TimerProps = {
     label: string,
     value: number
-}
+};
+
 const Timer = ({ value, label }: TimerProps) => {
     return (
         <div key={label} className={styles.glassCard}>
             <div className={`${styles.dropAnimation}`}></div>
-            <div className=" lg:text-6xl font-extrabold text-white">
+            <div className="lg:text-6xl font-extrabold text-white">
                 {value}
             </div>
-            <div className="text-[.4rem]   tracking-widest text-purple-200 font-medium">
+            <div className="text-[.4rem] tracking-widest text-purple-200 font-medium">
                 {label}
             </div>
         </div>
-    )
-}
+    );
+};
