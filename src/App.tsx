@@ -3,7 +3,7 @@ import CountDownTimer from "./components/CountDownTimer";
 import Manifesto from "./components/Manifesto";
 
 function App() {
-  const endDate = new Date("2025-06-07");
+ const endDate = new Date('2025-06-28T00:00:00');
 
   return (
     <>
