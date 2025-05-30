@@ -19,7 +19,8 @@ function App() {
           <Manifesto />
           <CountDownTimer endDate={endDate} />
         </div>
-          <Aim/>
+         {/*  
+          <Aim/>*/}
       </div>
    
     </>
