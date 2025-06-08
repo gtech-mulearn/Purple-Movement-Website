@@ -1,24 +1,34 @@
-import CountDownTimer from './components/CountDownTimer';
-import Manifesto from './components/Manifesto';
-import styles from './App.module.css';
+import Aim from "./components/Aim";
+import CountDownTimer from "./components/CountDownTimer";
+import Manifesto from "./components/Manifesto";
 
 function App() {
-  const endDate = new Date('2025-06-07');
-
+ const endDate = new Date('2025-06-28T00:00:00');
   return (
-    <div className={`min-h-screen text-white relative ${styles.pulseColor} overflow-hidden`}>
-     
-      {/* Main Content */}
-      <center><div className="flex  items-center justify-center gap-2 text-purple-500 mt-10 px-4">
-                    <h1 className="text-4xl md:text-6xl font-extrabold tracking-widest uppercase mt-5">The Purple Movement</h1>
-                </div></center>
-      <div className="relative z-10 max-w-4xl mx-auto px-4 pt-10 pb-10 space-y-24">
-      <CountDownTimer endDate={endDate} />
-      <div className="h-[60vh]" />
-        <Manifesto />
-        
+    <>
+      <div className="text-white bg-[url('../src/assets/images/ptm.jpg')] bg-cover overflow-hidden ">
+        <div className=" md:w-full mx-auto w-4/5 flex items-center justify-center">
+          <h1 className="font-NuraBold text-4xl md:text-6xl text-center font-extrabold text-[#8737d7] tracking-widest uppercase mt-8">
+            The Purple Movement
+          </h1>
+        </div>
+
+        {/* Main Content  */}
+        <div className=" w-full flex flex-col-reverse items-center md:mx-auto md:flex-row mt-[-4em] md:mt-24 gap-4 md:justify-between md:items-start">
+          <Manifesto />
+          <CountDownTimer endDate={endDate} />
+        </div>
+
+          {/* <Aim/> */}
+          
+
+         {/*  
+          <Aim/>*/}
+
       </div>
-    </div>
+   
+    </>
+  
   );
 }
 
