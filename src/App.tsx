@@ -3,12 +3,7 @@ import CountDownTimer from "./components/CountDownTimer";
 import Manifesto from "./components/Manifesto";
 
 function App() {
-
-  const endDate = new Date("2025-06-28");
-
  const endDate = new Date('2025-06-28T00:00:00');
-
-
   return (
     <>
       <div className="text-white bg-[url('../src/assets/images/ptm.jpg')] bg-cover overflow-hidden ">
