@@ -241,8 +241,8 @@ const Timer = ({ value, label }: TimerProps) => {
 };
 
 import { collection, query, where, getDocs, addDoc } from "firebase/firestore"; 
-// @ts-ignore
-import { db } from "../../firebase.js"; 
+import { db } from "../../lib/firebase"; // Adjust the import path as necessary
+
 
 
 
