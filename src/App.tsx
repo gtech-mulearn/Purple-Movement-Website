@@ -1,4 +1,3 @@
-import Aim from "./components/Aim";
 import CountDownTimer from "./components/CountDownTimer";
 import Manifesto from "./components/Manifesto";
 
