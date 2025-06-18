@@ -214,8 +214,8 @@ const CountDownTimer = ({ endDate }: { endDate: Date }) => {
         {/* Counter */}
         <div
           style={{ transition: "margin-top 0.5s ease-in-out" }}
-          className={`flex self-start justify-center items-center mt-[8rem] w-full px-4 py-2 rounded-xl md:rounded-2xl ${
-            isMarginIncreased ? "mt-[9rem] md:mt-12" : "mt-11"
+          className={`flex self-start justify-center items-center mt-[8rem] md:mt-6 w-full px-4 py-2 rounded-xl md:rounded-2xl ${
+            isMarginIncreased ? "mt-[9rem] md:mt-6" : "mt-11"
           }`}
         >
           <Counter />
