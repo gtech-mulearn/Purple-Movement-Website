@@ -12,19 +12,19 @@ const Manifesto = () => {
       }`}
     >
       <div className="md:col-span-2 md:row-span-5 md:col-start-2">
-        <div className=" text-[12px] leading-3">
+        <div className=" text-[15px] leading-3">
           <h2
-            className={`font-varien tracking-[0.1em] leading-tight text-[1rem] md:text-3xl font-extrabold`}
+            className={`font-varien tracking-[0.1em] mb-5 leading-tight md:text-3xl font-extrabold`}
           >
             Our <span className="text-purple-600">Manifesto</span>
           </h2>
           <div className="font-Poppins font-semibold italic space-y-1 border-l-[10px] px-2 rounded border-purple-600 mb-2">
-            <p className="text-[12px]">We are the Manifestors of Change.</p>
-            <p className="text-[12px]">We are not waiting for the future.</p>
+            <p>We are the Manifestors of Change.</p>
+            <p>We are not waiting for the future.</p>
           </div>
           <QuoteIcon size={20} />
-          <div className="space-y-1 m-2 text-[12px] font-Poppins font-semibold italic">
-            <p className="text-[12px]">
+          <div className="space-y-2 m-2  font-Poppins font-semibold italic">
+            <p className="">
               We are building it—with courage, code, creativity, and clarity.
             </p>
             <p>We are the voice of a generation that refuses to settle.</p>
@@ -43,14 +43,14 @@ const Manifesto = () => {
           </div>
 
           {expanded && (
-            <div className="space-y-1 text-[12px] m-2 font-Poppins font-semibold italic">
-              <div className="space-y-1">
+            <div className="space-y-2 m-2 font-Poppins font-semibold italic">
+              <div className="space-y-2">
                 <p>We believe in ecosystems that empower, not limit.</p>
                 <p>In access, not gatekeeping.</p>
                 <p>In bold visions, not borrowed templates.</p>
               </div>
 
-              <div className="space-y-1 ">
+              <div className="space-y-2 ">
                 <p>
                   We are here to{" "}
                   <span className="text-[#a632ff]">reclaim the narrative</span>—
@@ -60,7 +60,7 @@ const Manifesto = () => {
                 <p>And direction to the determined.</p>
               </div>
 
-              <div className="">
+              <div className="space-y-2">
                 <p className=" ">
                   This is{" "}
                   <span className="text-[#a632ff]">The Purple Movement</span>.
@@ -72,7 +72,7 @@ const Manifesto = () => {
                   A signal that change is not coming—it's already here.
                 </p>
               </div>
-              <div className="space-y-1  ">
+              <div className="space-y-2  ">
                 <p>We are the energy.</p>
                 <p>We are the strategy.</p>
                 <p>We are the spark.</p>
@@ -86,7 +86,7 @@ const Manifesto = () => {
           >
             {expanded ? "Show Less" : "Read More"}
           </button>
-          <p className="font-bold border-l-[10px] px-2 rounded border-purple-600  ">
+          <p className=" leading-5 font-bold border-l-[10px] px-2 rounded border-purple-600  ">
             This is Purple Movement <br />
             Learning with purpose. Power by people
           </p>
@@ -94,7 +94,7 @@ const Manifesto = () => {
       </div>
       <img
         src={char1}
-        className=" md:row-span-2  md:col-start-4 md:row-start-2 float-end relative w-[200px]"
+        className=" md:row-span-2  md:col-start-4 md:row-start-4 float-end md: relative w-[200px] md:w-[280px]"
       />
     </div>
   );

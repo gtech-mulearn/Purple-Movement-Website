@@ -91,12 +91,14 @@ const CountDownTimer = ({ endDate }: { endDate: Date }) => {
         />
       )}
 
-      <div className="flex flex-col w-full perspective-[1000px] ">
+      <div className="flex flex-col w-full mt-8 perspective-[1000px] ">
         <div
           className={`${styles.flipCardInner} ${isFlipped ? styles.flipped : ""} `}
         >
           {/* FRONT SIDE */}
-          <div className="md:w-[60%] w-full relative top-[10px] md:left-[20%] h-[40vh] md:h-[64vh] bg-cover rounded-2xl shadow-2xl flex flex-col justify-center md:space-y-8 space-y-5 [transform:rotateY(0deg)] ">
+          <div
+            className={`${styles.flipCardFront} md:w-[60%] w-full relative top-[10px] md:left-[20%] h-[40vh] md:h-[64vh] bg-cover rounded-2xl shadow-2xl flex flex-col justify-center  mb-5 md:space-y-8 space-y-5 [transform:rotateY(0deg)] `}
+          >
             <h2 className="font-Monteserrat text-[20px] md:text-4xl lg:text-5xl text-center font-bold mt-2 mb-2 ">
               Time Until Launch
             </h2>
@@ -114,9 +116,9 @@ const CountDownTimer = ({ endDate }: { endDate: Date }) => {
 
             <div className="text-center">
               <button
-                className="bg-[#a632ff] text-white px-4 md:px-6 py-1 md:py-3 my-1 text-sm md:text-xl font-semibold rounded-[20px]
-                hover:border-2  hover:border-white
-              transition-border duration-200 ease 
+                className="bg-purple-700 text-white px-4 md:px-6 py-1 md:py-3 my-1 text-sm md:text-xl font-semibold rounded-[10px]
+                hover:border-2 border-2 border-purple-600 hover:bg-transparent
+              transition-all duration-300 ease 
               "
                 onClick={() => {
                   setIsFlipped(true);
@@ -134,14 +136,14 @@ const CountDownTimer = ({ endDate }: { endDate: Date }) => {
               transform: "rotateY(180deg)",
               backfaceVisibility: "hidden",
             }}
-            className="absolute top-[10px] md:left-[20%] w-full md:w-[60%] h-[50vh] md:h-[64vh] p-2.5 bg-[url('../src/assets/images/bg.png')] bg-cover bg-center rounded-2xl shadow-2xl"
+            className="absolute top-1 md:top-3 md:left-[20%] w-full md:w-[60%] h-fit md:h-[64vh] p-2.5 bg-[url('../src/assets/images/bg.png')] bg-cover bg-center rounded-2xl shadow-2xl"
           >
             <h2 className="text-xl sm:text-2xl font-bold text-center my-4 ">
               Register Now
             </h2>
 
             <form
-              className="flex flex-col gap-2 sm:gap-3 w-full max-w-md mx-auto px-4"
+              className="flex flex-col gap-2 sm:gap-3 w-full px-2  mx-auto md:px-[60px] "
               onSubmit={(e) => {
                 e.preventDefault();
                 checkIfEmailExists();
@@ -155,7 +157,7 @@ const CountDownTimer = ({ endDate }: { endDate: Date }) => {
                 title="Name can only be Alphabets"
                 placeholder="Full Name"
                 id="name"
-                className="md:p-2 px-3 py-1 text-[12px] rounded-md bg-white/10 text-white placeholder-white/70"
+                className="p-3 border-2 border-purple-700 bg-transparent  text-[12px] rounded-md text-white placeholder-white/70"
               />
               <input
                 required
@@ -164,39 +166,40 @@ const CountDownTimer = ({ endDate }: { endDate: Date }) => {
                 title="Phone number should be 10 digits long"
                 placeholder="Phone Number"
                 id="phone"
-                className="md:p-2 px-3 py-1 text-[12px] rounded bg-white/10 text-white placeholder-white/70"
+                className="p-3  text-[12px] border-2 border-purple-700 bg-transparent  rounded  text-white placeholder-white/70"
               />
               <input
                 required
                 type="email"
                 placeholder="Email"
                 id="email"
-                className="md:p-2 px-3 py-1 text-[12px] rounded bg-white/10 text-white placeholder-white/70"
+                className="p-3 text-[12px] rounded border-2 border-purple-700 bg-transparent  text-white placeholder-white/70"
               />
               <input
                 required
                 type="text"
                 placeholder="College"
                 id="college"
-                className="md:p-2 px-3 py-1 text-[12px] rounded bg-white/10 text-white placeholder-white/70"
+                className="p-3  text-[12px]  rounded border-2 border-purple-700 bg-transparent  text-white placeholder-white/70"
               />
               <input
                 required
                 type="text"
                 placeholder="Contribution"
                 id="contribution"
-                className="md:p-2 px-3 py-1 text-[12px] rounded bg-white/10 text-white placeholder-white/70"
+                className="p-3 text-[12px] rounded border-2 border-purple-700 bg-transparent  text-white placeholder-white/70"
               />
 
               <button
                 type="submit"
-                className="bg-purple-500 hover:bg-purple-700 transition mx-auto my-1 w-[40%]  lg:h-10 rounded-lg font-medium text-[18px] md:text-xl"
+                className="bg-purple-600  active:bg-transparent  hover:border-2 border-2 border-purple-600 hover:bg-transparent
+              transition-all duration-300 ease  mx-auto  md:py-1 py-1.4 md:w-[20%] w-[35%] mt-5  rounded-md font-bold text-[18px] md:text-xl"
               >
                 Submit
               </button>
               <button
                 type="button"
-                className=" self-end md:mt-4 mr-[-1rem] md:mr-[-4rem] text-white w-half md:w-1/2 px-2 py-2 lg:py-2 text-xs lg:text-base  font-semibold rounded-full"
+                className=" text-center "
                 onClick={() => {
                   setIsFlipped(false);
                   setIsMarginIncreased(false); // Remove margin on back
@@ -211,8 +214,8 @@ const CountDownTimer = ({ endDate }: { endDate: Date }) => {
         {/* Counter */}
         <div
           style={{ transition: "margin-top 0.5s ease-in-out" }}
-          className={`flex self-start justify-center items-center  w-full px-4 py-2 rounded-xl md:rounded-2xl ${
-            isMarginIncreased ? "mt-[6rem] md:mt-12" : "mt-12"
+          className={`flex self-start justify-center items-center mt-[8rem] w-full px-4 py-2 rounded-xl md:rounded-2xl ${
+            isMarginIncreased ? "mt-[9rem] md:mt-12" : "mt-11"
           }`}
         >
           <Counter />
