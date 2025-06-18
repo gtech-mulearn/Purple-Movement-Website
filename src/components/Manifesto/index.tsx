@@ -1,103 +1,101 @@
-
+import { QuoteIcon } from "lucide-react";
 import { useState } from "react";
+import char1 from "../../assets/images/char1.png";
 
 const Manifesto = () => {
   const [expanded, setExpanded] = useState(false);
 
   return (
     <div
-      className={` mt-12 md:w-1/2 h-[450px] w-[90%] flex justify-center items-start ${
-    expanded ? 'mb-[70vh] md:mb-[50vh]' : 'mb-10 md:mb-[50vh]'
-  }`}
+      className={`md:grid md:grid-cols-5 md:grid-rows-5 px-2 gap-2 items-center flex${
+        expanded ? "mb-[70vh] md:mb-[50vh]" : "mb-10 md:mb-[50vh]"
+      }`}
     >
-      <div className="tracking-[0.2em] text-purple-100 w-full max-w-md space-y-3">
-        <div className="space-y-1">
+      <div className="md:col-span-2 md:row-span-5 md:col-start-2">
+        <div className=" text-[12px] leading-3">
           <h2
-            className={`font-varien tracking-[0.1em] leading-tight text-3xl font-extrabold`}
+            className={`font-varien tracking-[0.1em] leading-tight text-[1rem] md:text-3xl font-extrabold`}
           >
-            Manifestors
+            Our <span className="text-purple-600">Manifesto</span>
           </h2>
-          <div className={`font-NuraNormal`}>
-            <div className="space-y-1">
-              <p className="text-[12px]">We are the Manifestors of Change.</p>
-              <p className="text-[12px]">We are not waiting for the future.</p>
-              <p className="text-[12px]">
-                We are building it—with courage, code, creativity, and clarity.
-              </p>
-            </div>
-            <div className="space-y-1 text-[12px]">
-              <p>We are the voice of a generation that refuses to settle.</p>
-              <p>We are not consumers of culture.</p>
-              <p>
-                We are{" "}
-                <span className="text-[#a632ff] font-semibold">
-                  producers of purpose
-                </span>
-                .
-              </p>
-              <p>
-                We break barriers, not just for ourselves, but for every young
-                mind daring to dream.
-              </p>
-            </div>
-
-            {expanded && (
-              <>
-                <div className="space-y-1 text-[12px]">
-                  <p>We believe in ecosystems that empower, not limit.</p>
-                  <p>In access, not gatekeeping.</p>
-                  <p>In bold visions, not borrowed templates.</p>
-                </div>
-
-                <div className="space-y-1 text-[12px]">
-                  <p>
-                    We are here to{" "}
-                    <span className="text-[#a632ff] font-semibold">
-                      reclaim the narrative
-                    </span>
-                    —
-                  </p>
-                  <p>To give confidence to the curious,</p>
-                  <p>Networks to the bold,</p>
-                  <p>And direction to the determined.</p>
-                </div>
-
-                <div className="space-y-1">
-                  <p className="text-[12px] font-semibold">
-                    This is{" "}
-                    <span className="text-[#a632ff]">The Purple Movement</span>.
-                  </p>
-                  <p className="text-[12px]">
-                    A wave of youth power, purpose, and possibility.
-                  </p>
-                  <p className="text-[12px]">
-                    A signal that change is not coming—it's already here.
-                  </p>
-                </div>
-
-                <div className="space-y-1 text-[12px]">
-                  <p>We are the energy.</p>
-                  <p>We are the strategy.</p>
-                  <p>We are the spark.</p>
-                </div>
-
-                <p className="text-xl font-bold text-[#a632ff]">
-                  AND IT STARTS NOW.
-                </p>
-              </>
-            )}
+          <div className="font-Poppins font-semibold italic space-y-1 border-l-[10px] px-2 rounded border-purple-600 mb-2">
+            <p className="text-[12px]">We are the Manifestors of Change.</p>
+            <p className="text-[12px]">We are not waiting for the future.</p>
+          </div>
+          <QuoteIcon size={20} />
+          <div className="space-y-1 m-2 text-[12px] font-Poppins font-semibold italic">
+            <p className="text-[12px]">
+              We are building it—with courage, code, creativity, and clarity.
+            </p>
+            <p>We are the voice of a generation that refuses to settle.</p>
+            <p>We are not consumers of culture.</p>
+            <p>
+              We are{" "}
+              <span className="text-[#a632ff] font-semibold">
+                producers of purpose
+              </span>
+              .
+            </p>
+            <p>
+              We break barriers, not just for ourselves, but for every young
+              mind daring to dream.
+            </p>
           </div>
 
-          {/* Toggle button */}
-              <button
-        onClick={() => setExpanded(!expanded)}
-        className={`float-end underline text-white px-3 py-1 text-sm rounded-full font-serif ease-in-out focus:outline-none transition-all duration-300`}
-      >
-        {expanded ? "Show Less" : "Read More"}
-      </button>
+          {expanded && (
+            <div className="space-y-1 text-[12px] m-2 font-Poppins font-semibold italic">
+              <div className="space-y-1">
+                <p>We believe in ecosystems that empower, not limit.</p>
+                <p>In access, not gatekeeping.</p>
+                <p>In bold visions, not borrowed templates.</p>
+              </div>
 
+              <div className="space-y-1 ">
+                <p>
+                  We are here to{" "}
+                  <span className="text-[#a632ff]">reclaim the narrative</span>—
+                </p>
+                <p>To give confidence to the curious,</p>
+                <p>Networks to the bold,</p>
+                <p>And direction to the determined.</p>
+              </div>
+
+              <div className="">
+                <p className=" ">
+                  This is{" "}
+                  <span className="text-[#a632ff]">The Purple Movement</span>.
+                </p>
+                <p className="">
+                  A wave of youth power, purpose, and possibility.
+                </p>
+                <p className="">
+                  A signal that change is not coming—it's already here.
+                </p>
+              </div>
+              <div className="space-y-1  ">
+                <p>We are the energy.</p>
+                <p>We are the strategy.</p>
+                <p>We are the spark.</p>
+              </div>
+            </div>
+          )}
+          <QuoteIcon size={20} />
+          <button
+            onClick={() => setExpanded(!expanded)}
+            className={` underline text-white px-5 w-[150px] mx-[150px]  py-1 md:mx-[200px] md:text-sm rounded-full  ease-in-out focus:outline-none transition-all duration-300`}
+          >
+            {expanded ? "Show Less" : "Read More"}
+          </button>
+          <p className="font-bold border-l-[10px] px-2 rounded border-purple-600  ">
+            This is Purple Movement <br />
+            Learning with purpose. Power by people
+          </p>
         </div>
       </div>
+      <img
+        src={char1}
+        className=" md:row-span-2  md:col-start-4 md:row-start-2 float-end relative w-[200px]"
+      />
     </div>
   );
 };

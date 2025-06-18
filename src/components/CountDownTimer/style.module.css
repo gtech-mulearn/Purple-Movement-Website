@@ -1,65 +1,3 @@
-@keyframes slowPulse {
-  0%,
-  100% {
-    opacity: 0.9;
-    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
-  }
-
-  50% {
-    opacity: 1;
-    box-shadow: inset 0 0 30px rgba(255, 255, 255, 0.08);
-  }
-}
-
-@keyframes drop {
-  0% {
-    transform: translateY(-20px) scaleY(1.5);
-    opacity: 0;
-  }
-
-  50% {
-    transform: translateY(0) scaleY(1);
-    opacity: 1;
-  }
-
-  100% {
-    transform: translateY(10px) scaleY(0.8);
-    opacity: 0;
-  }
-}
-
-@keyframes glow {
-  0%,
-  100% {
-    opacity: 0.2;
-    box-shadow:
-    0 0 20px #ec4899,
-    0 0 40px #8b5cf6;
-  }
-
-  50% {
-    opacity: 0.8;
-    box-shadow:
-    0 0 20px #ec4899,
-    0 0 40px #8b5cf6;
-  }
-}
-
-
-.drop-animation::after {
-  content: "";
-  position: absolute;
-  top: -30px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 10px;
-  height: 10px;
-  background: rgba(255, 255, 255, 0.7);
-  border-radius: 50%;
-  animation: drop 1.2s infinite;
-}
-
-
 .flipCardInner {
   transition: transform 0.8s;
   transform-style: preserve-3d;
@@ -69,34 +7,9 @@
   transform: rotateY(180deg);
 }
 
-.glow {
-  position: absolute;
-  filter: blur(10px);
-  padding: 10px;
-  width: 100%;
-  height: 60vh;
-  background: linear-gradient(to right, #ec4899, #8b5cf6);
-  box-shadow:
-    0 0 20px #ec4899,
-    0 0 40px #8b5cf6;
-    animation: infinite 8s glow;
-    
-    @media screen and (max-width: 768px) {
-       height: 40vh;
-      }
-    @media screen and (max-width: 468px) {
-       height: 40vh;
-      }
-    
-
-}
-
-
 /* 
 .inputBar {
   background-color: rgba(200, 0, 255, 0.141);
   padding: 1px 15px;
   border-radius: 10px;
 } */
-
-
