@@ -20,7 +20,7 @@ const Counter = () => {
 
   return (
     <>
-      <div className="mb-[50px]" style={{ marginTop: "0rem" }}>
+      <div className="p-5">
         <div className="text-white text-lg md:text-xl font-semibold text-center">
           {/* Be a part the of this movement, along with */}
           Join with us and be a part of the change.

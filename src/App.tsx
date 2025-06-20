@@ -7,11 +7,7 @@ function App() {
 
   return (
     <>
-      <div className="text-white overflow-hidden ">
-        <h1 className="font-Monteserrat text-4xl md:text-6xl text-center font-extrabold text-[#8737d7] tracking-widest uppercase mt-8">
-          The Purple Movement
-        </h1>
-
+      <div className="text-white overflow-hidden  ">
         <CountDownTimer endDate={endDate} />
         <Manifesto />
       </div>
