@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 // import styles from "./style.module.css";
 import Counter from "../Counter";
 import PopupCard from "../PopUpCard";
-
+import logo from "../../assets/images/logo_pm.png";
+import logo2 from "../../assets/images/logopm.png";
 const CountDownTimer = ({ endDate }: { endDate: Date }) => {
   const calculateTimeLeft = () => {
     const difference = endDate.getTime() - new Date().getTime();
@@ -96,7 +97,7 @@ const CountDownTimer = ({ endDate }: { endDate: Date }) => {
         <nav className="grid grid-flow-col font-Monteserrat absolute top-0 md:top-5 md:mx-auto text-center font-extrabold text-[#8737d7] bg-purple-950/20 md:w-[600px] rounded-lg shadow-lg backdrop-blur-md w-full">
           <div className="items-center flex m-5">
             <img
-              src="../../assets/images/logo_pm.png"
+              src={logo}
               alt="Purple Movement Logo"
               className="h-8 md:h-10 "
             />
@@ -115,7 +116,7 @@ const CountDownTimer = ({ endDate }: { endDate: Date }) => {
       {/* REGISTRATION */}
       {showPopup && (
         <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center  justify-center z-50">
-          <div className="absolute m-auto  w-full md:w-[60%] h-fit md:h-[64vh] p-2.5 bg-[url('../../assets/images/bg.png')] bg-cover bg-center rounded-2xl shadow-2xl">
+          <div className="absolute m-auto  w-full md:w-[60%] h-fit md:h-[64vh] p-2.5 bg-[url('../src/assets/images/bg.png')] bg-cover bg-center rounded-2xl shadow-2xl">
             <div className="absolute right-5 ">
               <button
                 onClick={() => setShowPopup(false)}
@@ -190,7 +191,7 @@ const CountDownTimer = ({ endDate }: { endDate: Date }) => {
       )}
       <div className="flex flex-col justify-center  items-center px-4  w-full h-[100vh]">
         <img
-          src="../../assets/images/logopm.png"
+          src={logo2}
           alt="Purple Movement Logo"
           className="m-10 drop-shadow-[5px_5px_25px_rgb(119,14,189)] h-12 md:h-20 object-contain"
         />
