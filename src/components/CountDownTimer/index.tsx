@@ -97,7 +97,7 @@ const CountDownTimer = ({ endDate }: { endDate: Date }) => {
         <nav className="grid grid-flow-col font-Monteserrat absolute top-0 md:top-5 md:mx-auto text-center font-extrabold text-[#8737d7] bg-purple-950/20 md:w-[600px] rounded-lg shadow-lg backdrop-blur-md w-full">
           <div className="items-center flex m-5">
             <img
-              src={logo}
+              src={logo2}
               alt="Purple Movement Logo"
               className="h-8 md:h-10 "
             />
@@ -191,7 +191,7 @@ const CountDownTimer = ({ endDate }: { endDate: Date }) => {
       )}
       <div className="flex flex-col justify-center  items-center px-4  w-full h-[100vh]">
         <img
-          src={logo2}
+          src={logo}
           alt="Purple Movement Logo"
           className="m-10 drop-shadow-[5px_5px_25px_rgb(119,14,189)] h-12 md:h-20 object-contain"
         />
