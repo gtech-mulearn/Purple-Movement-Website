@@ -8,7 +8,7 @@ import {
   Copyright,
   Phone,
 } from "lucide-react";
-
+import logo from "../../assets/images/logo_pm.png";
 export const Footer = () => {
   return (
     <footer
@@ -23,7 +23,7 @@ export const Footer = () => {
           <div className="md:col-span-3 flex flex-col">
             <div className="flex justify-start mb-5">
               <img
-                src="..\src\assets\images\logo_pm.png"
+                src={logo}
                 alt="Purple movement Logo"
                 className="h-16 object-contain"
               />
