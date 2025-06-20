@@ -1,15 +1,20 @@
 import { useEffect, useState } from "react";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getCountFromServer } from "firebase/firestore";
 // @ts-ignore
 import { db } from "../../firebase.js";
 
 const Counter = () => {
   const [totalCount, setTotalCount] = useState(0);
+
+
   useEffect(() => {
     const fetchTotalCount = async () => {
       try {
-        const querySnapshot = await getDocs(collection(db, "FormData"));
-        setTotalCount(querySnapshot.size);
+        const colRef = collection(db, "FormData");
+        const snapshot = await getCountFromServer(colRef);
+        const count = snapshot.data().count;
+        setTotalCount(count); // ✅ This was missing
+
       } catch (error) {
         console.error("Error fetching total count:", error);
       }
@@ -31,6 +36,7 @@ const Counter = () => {
         </div>
       </div>
     </>
+
   );
 };
 
