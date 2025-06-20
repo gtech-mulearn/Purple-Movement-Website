@@ -7,7 +7,7 @@ const Manifesto = () => {
 
   return (
     <div
-      className={`md:grid md:grid-cols-5 md:grid-rows-5 px-2 gap-2 items-center flex${
+      className={`md:grid md:grid-cols-5  md:grid-rows-5 px-2 gap-2 items-center flex${
         expanded ? "mb-[70vh] md:mb-[50vh]" : "mb-10 md:mb-[50vh]"
       }`}
     >
@@ -23,11 +23,11 @@ const Manifesto = () => {
             <p>We are not waiting for the future.</p>
           </div>
           <QuoteIcon size={20} />
-          <div className="space-y-2 m-2  font-Poppins font-semibold italic">
-            <p className="">
-              We are building it—with courage, code, creativity, and clarity.
-            </p>
-            <p>We are the voice of a generation that refuses to settle.</p>
+          <div className="space-y-2 m-2 leading-1 font-Poppins font-semibold italic">
+            <p className="">We are building it</p>
+            <p>With courage code, creativity, and clarity.</p>
+            <p>We are the voice of a generation </p>{" "}
+            <p>That refuses to settle.</p>
             <p>We are not consumers of culture.</p>
             <p>
               We are{" "}
@@ -36,47 +36,34 @@ const Manifesto = () => {
               </span>
               .
             </p>
-            <p>
-              We break barriers, not just for ourselves, but for every young
-              mind daring to dream.
-            </p>
+            <p>We break barriers, not just for ourselves</p>
+            <p>But for every young mind daring to dream.</p>
           </div>
 
           {expanded && (
             <div className="space-y-2 m-2 font-Poppins font-semibold italic">
-              <div className="space-y-2">
-                <p>We believe in ecosystems that empower, not limit.</p>
-                <p>In access, not gatekeeping.</p>
-                <p>In bold visions, not borrowed templates.</p>
-              </div>
-
-              <div className="space-y-2 ">
-                <p>
-                  We are here to{" "}
-                  <span className="text-[#a632ff]">reclaim the narrative</span>—
-                </p>
-                <p>To give confidence to the curious,</p>
-                <p>Networks to the bold,</p>
-                <p>And direction to the determined.</p>
-              </div>
-
-              <div className="space-y-2">
-                <p className=" ">
-                  This is{" "}
-                  <span className="text-[#a632ff]">The Purple Movement</span>.
-                </p>
-                <p className="">
-                  A wave of youth power, purpose, and possibility.
-                </p>
-                <p className="">
-                  A signal that change is not coming—it's already here.
-                </p>
-              </div>
-              <div className="space-y-2  ">
-                <p>We are the energy.</p>
-                <p>We are the strategy.</p>
-                <p>We are the spark.</p>
-              </div>
+              <p>We believe in ecosystems that empower, not limit.</p>
+              <p>In access, not gatekeeping.</p>
+              <p>In bold visions, not borrowed templates.</p>
+              <p>
+                We are here to{" "}
+                <span className="text-[#a632ff]">reclaim the narrative</span>—
+              </p>
+              <p>To give confidence to the curious,</p>
+              <p>Networks to the bold,</p>
+              <p>And direction to the determined.</p>
+              <p className=" ">
+                This is{" "}
+                <span className="text-[#a632ff]">The Purple Movement</span>.
+              </p>
+              <p className="">
+                A wave of youth power, purpose, and possibility.
+              </p>
+              <p className="">A signal that change is not coming—</p>{" "}
+              <p>It's already here.</p>
+              <p>We are the energy.</p>
+              <p>We are the strategy.</p>
+              <p>We are the spark.</p>
             </div>
           )}
           <QuoteIcon size={20} />
@@ -94,7 +81,7 @@ const Manifesto = () => {
       </div>
       <img
         src={char1}
-        className=" md:row-span-2  md:col-start-4 md:row-start-4 float-end md: relative w-[200px] md:w-[280px]"
+        className=" md:row-span-2  md:col-start-4 md:row-start-4 float-end md:relative w-[200px] md:w-[280px]"
       />
     </div>
   );
