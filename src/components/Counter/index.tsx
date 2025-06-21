@@ -6,7 +6,6 @@ import { db } from "../../firebase.js";
 const Counter = () => {
   const [totalCount, setTotalCount] = useState(0);
 
-
   useEffect(() => {
     const fetchTotalCount = async () => {
       try {
@@ -14,7 +13,6 @@ const Counter = () => {
         const snapshot = await getCountFromServer(colRef);
         const count = snapshot.data().count;
         setTotalCount(count); // ✅ This was missing
-
       } catch (error) {
         console.error("Error fetching total count:", error);
       }
@@ -25,7 +23,7 @@ const Counter = () => {
 
   return (
     <>
-      <div className="mb-[50px]" style={{ marginTop: "0rem" }}>
+      <div className="p-5">
         <div className="text-white text-lg md:text-xl font-semibold text-center">
           {/* Be a part the of this movement, along with */}
           Join with us and be a part of the change.
@@ -36,7 +34,6 @@ const Counter = () => {
         </div>
       </div>
     </>
-
   );
 };
 
