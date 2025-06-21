@@ -1,54 +1,71 @@
-# React + TypeScript + Vite
+# 💜 The Purple Movement – Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**We are the Manifestors of Change.**
 
-Currently, two official plugins are available:
+The Purple Movement is a bold, open-source initiative by **GTech μLearn** — created to inspire, enable, and accelerate a generation of young changemakers. This is the official pre-launch website of the movement, designed to help you explore what we stand for and how you can be a part of it.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+🔗 Website: [purple-movement.com](https://www.purple-movement.com)  
+📂 Docs & Source: [github.com/gtech-mulearn/Purple-Movement](https://github.com/gtech-mulearn/Purple-Movement)
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🟣 The Manifesto
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+> We are the Manifestors of Change.
+>
+> We are not waiting for the future.  
+> We are building it—with courage, code, creativity, and clarity.
+>
+> We are the voice of a generation that refuses to settle.  
+> We are not consumers of culture.  
+> We are producers of purpose.  
+> We break barriers, not just for ourselves, but for every young mind daring to dream.
+>
+> We believe in ecosystems that empower, not limit.  
+> In access, not gatekeeping.  
+> In bold visions, not borrowed templates.
+>
+> We are here to reclaim the narrative—  
+> To give confidence to the curious,  
+> Networks to the bold,  
+> And direction to the determined.
+>
+> This is The Purple Movement.  
+> A wave of youth power, purpose, and possibility.  
+> A signal that change is not coming—it’s already here.
+>
+> This movement is not for the sidelines.  
+> It’s for the doers, the builders, the ones who say,  
+> “Why not us?”
+>
+> We are the energy.  
+> We are the strategy.  
+> We are the spark.
+>
+> **And it starts now.**
+---
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🔓 Open Source & Community-Driven
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+The Purple Movement is fully open-source and built **by the community, for the community**. All website source code, content, and documentation are available here:
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+👉 [https://github.com/gtech-mulearn/Purple-Movement](https://github.com/gtech-mulearn/Purple-Movement)
+
+---
+
+## 👥 Maintainers
+
+Maintained by [**GTech μLearn**](https://github.com/gtech-mulearn) and supported by the vibrant μLearn community.
+
+---
+
+## 📬 Connect With Us
+
+- 🌐 [mulearn.org](https://www.mulearn.org)
+- 💬 [discord.gg/mulearn](https://discord.gg/mulearn)
+- 🟣 [purple-movement.com](https://www.purple-movement.com)
+
+---
+
+> 💡 _This is not just a website. It's a signal. The Movement has begun._
+---
