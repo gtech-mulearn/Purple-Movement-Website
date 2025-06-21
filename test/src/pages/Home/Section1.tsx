@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import logo from "../../assets/images/logo_pm.png";
 import Counter from '../../components/Counter';
 import Timer from '../../components/Timer';
+import JoinUsButton from '../../components/JoinUsButton';
 
 export const Section1 = ({ endDate }: { endDate: Date }) => {
     const calculateTimeLeft = () => {
@@ -30,36 +31,28 @@ export const Section1 = ({ endDate }: { endDate: Date }) => {
         return () => clearInterval(timer);
     }, [endDate]);
     return (
-        <div className="flex flex-col min-h-screen my-16 justify-center  items-center px-4  w-full ">
+        <div className="flex flex-col min-h-screen justify-center items-center w-full text-white pt-24 sm:pt-32">
             <img
                 src={logo}
                 alt="Purple Movement Logo"
-                className=" drop-shadow-[5px_5px_25px_rgb(119,14,189)] h-12 md:h-20 object-contain"
+                className=" drop-shadow-[5px_5px_25px_rgb(119,14,189)] h-12 xs:h-20 sm:h-20 object-contain"
             />
-            <h2 className="font-Monteserrat md:mb-15 mb-16 text-[20px] md:text-[40px] text-center font-normal ">
+            <h2 className="font-Gilroy text-center my-8 xs:mt-14 sm:my-16 xs:text-3xl sm:text-4xl">
                 Time Until Launch
             </h2>
-            <div className={`flex justify-center items-center  `}>
-                <div className={`flex flex-col`}>
-                    <div className="flex gap-1 md:gap-[50px] flex-wrap ">
-                        {[
-                            { value: timeLeft.days, label: "DAYS" },
-                            { value: timeLeft.hours, label: "HOURS" },
-                            { value: timeLeft.minutes, label: "MINUTES" },
-                            { value: timeLeft.seconds, label: "SECONDS" },
-                        ].map((item) => (
-                            <Timer key={item.label} value={item.value} label={item.label} />
-                        ))}
-                    </div>
-
-                    <div className="text-center"></div>
-                </div>
+            <div className="flex w-full max-w-[200px] self-center xs:max-w-[350px] sm:max-w-full sm:gap-10 justify-between sm:justify-center ">
+                {[
+                    { value: timeLeft.days, label: "DAYS" },
+                    { value: timeLeft.hours, label: "HOURS" },
+                    { value: timeLeft.minutes, label: "MINUTES" },
+                    { value: timeLeft.seconds, label: "SECONDS" },
+                ].map((item) => (
+                    <Timer key={item.label} value={item.value} label={item.label} />
+                ))}
             </div>
-
+            <JoinUsButton className="my-5 xs:my-10 sm:my-16" />
             {/* Counter */}
-            <div className={`flex  justify-center mt-12 w-fit px-4 py-2  `}>
-                <Counter />
-            </div>
+            <Counter />
         </div>
     )
 }

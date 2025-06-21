@@ -11,10 +11,12 @@ const Home = () => {
     return (
         <>
             <Navbar onJoinUs={() => { setViewJoinModal(true) }} />
-            <Form isOpen={viewJoinModal} onClose={() => { setViewJoinModal(false) }} />
-            <Section1 endDate={endDate} />
-            <Manifesto />
-            <Footer />
+            <div className='px-4 sm:px-6'>
+                <Form isOpen={viewJoinModal} onClose={() => { setViewJoinModal(false) }} />
+                <Section1 endDate={endDate} />
+                {/* <Manifesto /> */}
+            </div>
+            {/* <Footer /> */}
         </>
     )
 }

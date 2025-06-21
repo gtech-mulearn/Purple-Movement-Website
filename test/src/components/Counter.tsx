@@ -10,20 +10,17 @@ const Counter = () => {
     }, []);
 
     return (
-        <>
-            <div className="p-5">
-                <div className="text-white text-lg md:text-xl font-semibold text-center">
-                    {/* Be a part the of this movement, along with */}
-                    Join with us and be a part of the change.
-                </div>
-                <div className="flex gap-3 text-4xl md:text-6xl font-extrabold text-white mt-2 justify-center">
-                    {totalCount && <>
-                        {totalCount}{" "}
-                        <span className="text-2xl self-center"> + Initiators </span>
-                    </>}
-                </div>
+        <div className="flex flex-col  justify-center items-center gap-2 xs:gap-4">
+            <div className="text-white text-sm xs:text-lg sm:text-2xl text-center">
+                {/* Be a part the of this movement, along with */}
+                Join with us and be a part of the change.
             </div>
-        </>
+            <div className="flex flex-row gap-3 text-xl sm:text-4xl md:text-3xl font-bold text-white mt-2 justify-center">
+                {totalCount && <>
+                    {totalCount} + Initiators
+                </>}
+            </div>
+        </div>
     );
 };
 

@@ -12,7 +12,7 @@ const Manifesto = () => {
                     {" "}
                     {/* More natural line height */}
                     <h2 className="font-varien tracking-[0.1em] text-[20px] mb-5 leading-tight md:text-3xl font-extrabold">
-                        Our <span className="text-purple-600 ">Manifesto</span>
+                        Our <span className="text-purple-600 font-Montserrat">Manifesto</span>
                     </h2>
                     <div className="font-Poppins font-semibold italic space-y-1 border-l-[10px] px-2 rounded border-purple-600 mb-2">
                         <p>We are the Manifestors of Change.</p>
