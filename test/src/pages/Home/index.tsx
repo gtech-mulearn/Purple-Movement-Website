@@ -16,9 +16,9 @@ const Home = () => {
             <div className='px-4 sm:px-6'>
                 <Form isOpen={viewJoinModal} onClose={onClose} />
                 <Section1 endDate={endDate} onJoinUs={onJoinUs} />
-                {/* <Manifesto /> */}
+                <Manifesto />
             </div>
-            {/* <Footer /> */}
+            <Footer />
         </>
     )
 }
