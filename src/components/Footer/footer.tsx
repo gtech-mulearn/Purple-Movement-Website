@@ -29,7 +29,11 @@ export const Footer = () => {
               />
             </div>
             <p className="text-[rgba(242,242,242,1)] text-base font-normal leading-6 mb-6">
-              xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+              <span className="font-bold text-[1.5rem]">
+                The Purple Movement
+              </span>{" "}
+              <br />
+              Rebuilding how India learns
             </p>
 
             {/* Social Media Links */}
@@ -65,16 +69,14 @@ export const Footer = () => {
             <ul className="text-[rgba(242,242,242,1)] font-normal space-y-3">
               <li className="hover:text-purple-800 transition-colors">
                 <a href="" className="inline-block hover:underline">
-                  Join Us
-                </a>
-              </li>
-              <li className="hover:text-purple-800 transition-colors">
-                <a href="" className="inline-block hover:underline">
                   Manifesto
                 </a>
               </li>
               <li className="hover:text-purple-800 transition-colors">
-                <a href="" className="inline-block hover:underline">
+                <a
+                  href="https://app.mulearn.org"
+                  className="inline-block hover:underline"
+                >
                   Mulearn
                 </a>
               </li>
