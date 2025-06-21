@@ -1,19 +1,11 @@
-import CountDownTimer from "./components/CountDownTimer";
-import { Footer } from "./components/Footer/footer";
-import Manifesto from "./components/Manifesto";
+import Home from './pages/Home';
 
-function App() {
+const App = () => (
+    <div className="bg-[url('../src/assets/images/bg.png')] bg-no-repeat bg-cover">
+        <Home />
+    </div>
+)
+export default App
 
- const endDate = new Date('2025-06-28T00:00:00');
-  return (
-    <>
-      <div className="text-white overflow-hidden  ">
-        <CountDownTimer endDate={endDate} />
-        <Manifesto />
-      </div>
-      <Footer />
-    </>
-  );
-}
 
-export default App;
+
