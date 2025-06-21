@@ -4,7 +4,7 @@ import Counter from '../../components/Counter';
 import Timer from '../../components/Timer';
 import JoinUsButton from '../../components/JoinUsButton';
 
-export const Section1 = ({ endDate }: { endDate: Date }) => {
+export const Section1 = ({ endDate, onJoinUs }: { endDate: Date, onJoinUs: () => void }) => {
     const calculateTimeLeft = () => {
         const difference = endDate.getTime() - new Date().getTime();
         let timeLeft = { days: 0, hours: 0, minutes: 0, seconds: 0 };
@@ -50,7 +50,7 @@ export const Section1 = ({ endDate }: { endDate: Date }) => {
                     <Timer key={item.label} value={item.value} label={item.label} />
                 ))}
             </div>
-            <JoinUsButton className="my-5 xs:my-10 sm:my-16" />
+            <JoinUsButton onClick={onJoinUs} className="my-5 xs:my-10 sm:my-16" />
             {/* Counter */}
             <Counter />
         </div>
