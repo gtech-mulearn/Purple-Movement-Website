@@ -31,7 +31,7 @@ export const Section1 = ({ endDate, onJoinUs }: { endDate: Date, onJoinUs: () =>
         return () => clearInterval(timer);
     }, [endDate]);
     return (
-        <div className="flex flex-col min-h-screen justify-center items-center w-full text-white pt-24 sm:pt-32 ">
+        <div className="flex flex-col min-h-screen justify-center items-center w-full text-white pt-24 sm:pt-32 pb-28 ">
             <img
                 src={logo}
                 alt="Purple Movement Logo"

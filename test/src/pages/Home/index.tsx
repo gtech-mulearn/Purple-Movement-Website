@@ -3,7 +3,7 @@ import Form from '../../components/Form';
 import Navbar from '../../components/Navbar';
 import { Section1 } from './Section1';
 import Footer from '../../components/Footer';
-import Manifesto from '../../components/Manifesto';
+import Manifesto from './Manifesto';
 
 const Home = () => {
     const endDate = new Date('2025-06-28T00:00:00');

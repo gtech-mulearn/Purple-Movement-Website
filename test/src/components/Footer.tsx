@@ -13,7 +13,7 @@ const Footer = () => {
     return (
         <footer
             id="contact"
-            className="bg-black w-full  overflow-hidden mt-20 md:mt-5 pt-12 pb-8 rounded-t-[50px] md:rounded-t-[80px]"
+            className="bg-black w-full  overflow-hidden pt-12 pb-8 rounded-t-[50px] md:rounded-t-[80px]"
         >
             <div className="container mx-auto px-10 md:px-8">
                 {/* Logo Row */}
