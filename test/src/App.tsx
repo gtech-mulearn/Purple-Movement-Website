@@ -1,8 +1,11 @@
 import './App.css';
 import Home from './pages/Home';
 
-// Since there is no routing, we can just render the Home component directly
-const App = () => <Home />
+const App = () => (
+    <div className="bg-[url('../src/assets/images/bg.png')] bg-no-repeat bg-cover min-h-screen">
+        <Home />
+    </div>
+)
 export default App
 
 
