@@ -3,7 +3,6 @@ import logo from "../../assets/images/logo_pm.png";
 import Counter from "../../components/Counter";
 import Timer from "../../components/Timer";
 import JoinUsButton from "../../components/JoinUsButton";
-import Cube3D from "../../components/cube";
 
 export const Section1 = ({
   endDate,
