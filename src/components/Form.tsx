@@ -79,8 +79,8 @@ const Form = ({
           onClose={() => setPopupContent(undefined)}
         />
       )}
-      <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center  justify-center z-50">
-        <div className="absolute m-auto  w-full md:w-[50%] p-2.5  bg-[#1B0E27] rounded-2xl shadow-2xl">
+      <div className="fixed inset-0 bg-black/50 px-5 flex items-center  justify-center z-50">
+        <div className="absolute m-auto  w-[90%] md:w-[50%] p-2.5  bg-[#1B0E27] rounded-2xl shadow-2xl">
           <div className="absolute right-5 ">
             <button
               onClick={onClose}
@@ -180,7 +180,7 @@ const Form = ({
             <button
               type="submit"
               className="bg-purple-600  active:bg-transparent text-white hover:border-2 border-2 border-purple-600 hover:bg-transparent
-              transition-all duration-300 ease  mx-auto  md:py-1 py-1.4 md:w-[22%] w-[36%] mt-5  rounded-md font-bold text-[18px] md:text-xl"
+              transition-all duration-300 ease px-2 md:px-4  mx-auto  md:py-1 py-1.4 max-w-fit my-5  rounded-md font-bold text-[18px] md:text-xl"
             >
               {pending ? "Submitting..." : "Submit"}
             </button>
