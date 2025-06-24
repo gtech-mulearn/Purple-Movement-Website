@@ -1,21 +1,32 @@
 import clsx from "clsx";
 import char1 from "../../assets/images/char1.png";
+import Cube3D from "../../components/cube";
 
 const Manifesto = () => {
   return (
     <div className="flex flex-col min-h-screen w-full text-white px-4 relative sm:py-16">
       <div className="md:pl-24">
+        <div className="hidden md:hidden lg:visible lg:absolute lg:right-50 lg:flex lg:justify-end">
+          <Cube3D />
+        </div>
+        <div className="hidden md:hidden lg:visible lg:absolute lg:right-120 lg:rotate-60  lg:top-[100vh] lg:flex lg:w-[50px] lg:h-[50px] lg:p-[50px] lg:bg-purple-700/20"></div>
+        <div className="hidden md:hidden lg:visible lg:absolute lg:left-60 lg:rotate-40 lg:top-30 rounded-full lg:flex lg:w-[50px] lg:h-[80px] lg:p-[50px] lg:bg-purple-700/20"></div>
+        <div className="hidden md:hidden lg:visible lg:absolute lg:left-80 lg:rotate-40 lg:bottom-30 rounded lg:flex lg:w-[50px] lg:h-[80px] lg:p-[50px] lg:bg-purple-700/20"></div>
+        <div className="hidden md:hidden lg:visible lg:absolute lg:right-60 lg:rotate-40 lg:bottom-50 rounded-full lg:flex lg:w-[50px] lg:h-[80px] lg:p-[50px] lg:bg-purple-700/20"></div>
+        <div className="hidden md:hidden lg:visible lg:absolute lg:left-100 lg:rotate-40 lg:top-10 lg:flex lg:w-[50px] lg:h-[50px] lg:p-[50px] lg:bg-purple-700/20"></div>
         <Title />
         <Box className="md:my-16 my-8">
           We are not waiting for the future. We are building it. <br /> With
           courage, code, creativity, and community.
         </Box>
         <ManifestoContent />
+
         <Box className="md:mt-10 mt-5">
           This is The Purple Movement. <br /> Learning with purpose. Powered by
           people.
         </Box>
       </div>
+
       <div className="w-full flex justify-end sm:absolute max-w-[1360px]  bottom-0">
         <img src={char1} className="w-[250px] md:w-[30%] h-full " />
       </div>
