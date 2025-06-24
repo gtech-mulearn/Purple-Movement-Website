@@ -14,7 +14,7 @@ const Timer = ({ value, label }: TimerProps) => {
 
                 <div
                     className="
-                     text-sm xs:text-[25px] shadow-lg  sm:text-[3rem] font-bold text-white
+                     text-sm xs:text-[25px] sm:text-[3rem] font-bold text-white
                     font-Roboto"
                 >
                     {value < 10 ? `0${value}` : value}
