@@ -34,8 +34,8 @@ const Home = () => {
       <canvas
         ref={canvasRef}
         className="max-w-full h-auto shadow-lg rounded-lg hidden"
-        width="1080"
-        height="1080"
+        width="1120"
+        height="850"
       />
       <Navbar onJoinUs={onJoinUs} />
       <div className="px-4 sm:px-6">

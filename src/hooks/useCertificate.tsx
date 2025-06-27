@@ -7,7 +7,7 @@ export const useCertificate = () => {
     const generateCertificate = async ({ certificateId, name }: { certificateId: string, name: string }) => {
         if (!canvasRef.current) return
         try {
-            const formattedId = 'TPMC' + certificateId
+            const formattedId = 'TPMC' + certificateId.toUpperCase()
 
             const textCoordinates = [
                 {
@@ -22,9 +22,9 @@ export const useCertificate = () => {
                     fontFamily: 'Montserrat',
                 },
                 {
-                    x: 322,
-                    y: 458,
-                    fontSize: 24,
+                    x: 302.5,
+                    y: 456.5,
+                    fontSize: 18,
                     color: '#fff',
                     maxWidth: 400,
                     maxLines: 1,
@@ -63,6 +63,18 @@ export const useCertificate = () => {
         link.href = canvas.toDataURL('image/png');
         link.click();
     };
+    const encodeToNumber = (str: string) => {
+        const encoded = btoa(str);
+
+        return parseInt(encoded, 10);
+    }
+
+    const decodeFromNumber = (str: string) => {
+        const id = str.replace('TPMC', '')
+        const num = parseInt(id, 10);
+        const decoded = atob(num.toString());
+        return decoded;
+    }
     return {
         canvasRef,
         error,
