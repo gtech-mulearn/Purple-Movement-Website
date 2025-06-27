@@ -7,9 +7,13 @@ import JoinUsButton from "../../components/JoinUsButton";
 export const Section1 = ({
   endDate,
   onJoinUs,
+  update,
+  value,
 }: {
   endDate: Date;
   onJoinUs: () => void;
+  value: number | undefined;
+  update: (value: number) => void;
 }) => {
   const calculateTimeLeft = () => {
     const difference = endDate.getTime() - new Date().getTime();
@@ -36,6 +40,7 @@ export const Section1 = ({
     }, 1000);
     return () => clearInterval(timer);
   }, [endDate]);
+
   return (
     <div className="flex flex-col min-h-screen justify-center items-center w-full text-white pt-24 sm:pt-32 pb-28 ">
       <img
@@ -43,6 +48,7 @@ export const Section1 = ({
         alt="Purple Movement Logo"
         className=" drop-shadow-[5px_5px_25px_rgb(119,14,189)] h-12 xs:h-20 sm:h-20 object-contain"
       />
+
       <h2 className="font-Gilroy text-center my-8 xs:mt-14 sm:my-16 xs:text-3xl sm:text-4xl">
         Time Until Launch
       </h2>
@@ -63,7 +69,7 @@ export const Section1 = ({
       <div className="hidden md:hidden lg:visible lg:absolute lg:left-20 lg:rotate-40 lg:bottom-10 lg:flex lg:w-[50px] lg:h-[50px] lg:p-[60px] lg:bg-purple-700/20"></div>
       <div className="hidden md:hidden lg:visible lg:absolute lg:left-60 lg:rotate-40 lg:top-30 rounded-full lg:flex lg:w-[50px] lg:h-[80px] lg:p-[50px] lg:bg-purple-700/20"></div>
 
-      <Counter />
+      <Counter value={value} update={update} />
     </div>
   );
 };
