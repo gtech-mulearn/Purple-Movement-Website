@@ -1,5 +1,5 @@
 import bgVideo from "./assets/bg.mp4";
-import { Footer } from "./components/Footer/footer";
+
 import Manifesto from "./components/ManifestoPage/manifestoPage";
 
 import { LogoSlider } from "./components/LogoSlider/logoSlider";
@@ -7,6 +7,7 @@ import { Muverse } from "./components/muVresePage/muVersePage";
 import { WhyNow } from "./components/Whynow/whyNow";
 import { VideoSection } from "./components/VideoSection/VideoSection";
 import { Navbar } from "./components/Navbar/navbar";
+import Footer from "./components/Footer/footer";
 
 const HomePage = () => {
   return (
