@@ -92,7 +92,11 @@ const Form = ({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black/50 px-5 flex items-center justify-center z-50">
+    <div className="fixed inset-0 bg-black/50 px-5 flex items-center justify-center z-50"
+      onClick={(e) => {
+        if (e.target === e.currentTarget) onClose();
+      }}
+    >
       <div className="absolute m-auto w-[90%] md:w-[50%] p-2.5 bg-[#1B0E27] rounded-2xl shadow-2xl">
         <div className="absolute right-5">
           <button
