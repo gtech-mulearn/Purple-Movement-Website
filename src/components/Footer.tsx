@@ -92,20 +92,7 @@ const Footer = () => {
               <p>2025 PURPLE MOVEMENT. All rights reserved.</p>
             </div>
 
-            <div className="flex items-center gap-6">
-              <a
-                href=""
-                className="text-sm text-[rgba(242,242,242,1)] hover:text-purple-800 transition-colors"
-              >
-                Privacy Policy
-              </a>
-              <a
-                href=""
-                className="text-sm text-[rgba(242,242,242,1)] hover:text-purple-800 transition-colors"
-              >
-                Terms of Service
-              </a>
-            </div>
+
           </div>
         </div>
       </div>
