@@ -1,8 +1,16 @@
-import { addDoc, collection, getCountFromServer, getDocs, query, where } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  getCountFromServer,
+  getDocs,
+  query,
+  where,
+} from "firebase/firestore";
 import { X } from "lucide-react";
 import { useState } from "react";
 import { useFormStatus } from "react-dom";
 import { db } from "../lib/firebase";
+
 type RecordType = {
   name: string;
   phone: string;
@@ -10,6 +18,7 @@ type RecordType = {
   contribution: string;
   timestamp: string;
 };
+
 export type PopupContentType = {
   title: string;
   message: string;
@@ -20,18 +29,22 @@ export type PopupContentType = {
   email?: string;
   contribution?: string;
   isSuccess?: boolean;
-  count?: number
+  count?: number;
 };
+
 const Form = ({
   isOpen,
   onClose,
-  onResult
+  onResult,
 }: {
   onClose: () => void;
   isOpen: boolean;
   onResult: (result: PopupContentType) => void;
 }) => {
   const [emailError, setEmailError] = useState<string>();
+
+  const { pending } = useFormStatus();
+
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.currentTarget;
@@ -42,119 +55,112 @@ const Form = ({
     const contribution = formData.get("contribution") as string;
 
     try {
-      const { emailExists, record } = await checkIfEmailExists(email)
+      const { emailExists, record } = await checkIfEmailExists(email);
       if (emailExists) {
         onResult({
           title: "Success",
           message: "Email already exists",
-          ...record
-        })
-        return
+          ...record,
+        });
+        return;
       }
+
+      const res = await storeRecord({
+        name,
+        phone,
+        email,
+        contribution,
+        timestamp: new Date().toISOString(),
+      });
+
+      onResult({
+        title: res.title,
+        message: res.message,
+        id: res.id,
+        timestamp: res.timestamp,
+        name,
+        phone,
+        email,
+        contribution,
+        count: res.count,
+      });
     } catch (error) {
-      console.log(error)
+      console.error(error);
     }
-
-    const res = await storeRecord({
-      name,
-      phone,
-      email,
-      contribution,
-      timestamp: new Date().toISOString(),
-
-    });
-    onResult({
-      title: res.title,
-      message: res.message,
-      id: res.id,
-      timestamp: res.timestamp,
-      name,
-      phone,
-      email,
-      contribution,
-      count: res.count
-    });
   };
-  const { pending } = useFormStatus();
 
   if (!isOpen) return null;
+
   return (
-    <>
-
-      <div className="fixed inset-0 bg-black/50 px-5 flex items-center  justify-center z-50">
-        <div className="absolute m-auto  w-[90%] md:w-[50%] p-2.5  bg-[#1B0E27] rounded-2xl shadow-2xl">
-          <div className="absolute right-5 ">
-            <button
-              onClick={onClose}
-              className="text-white hover:text-purple-400 transition duration-300 p-1"
-              aria-label="Close"
-            >
-              <X color="white" size={24} />
-            </button>
-          </div>
-          <h2 className="text-xl text-white sm:text-2xl font-bold text-center my-10 ">
-            Register Now
-          </h2>
-
-          <form
-            className="flex flex-col gap-2 sm:gap-6  w-full px-2 mx-auto md:px-[60px]"
-            onSubmit={onSubmit}
+    <div className="fixed inset-0 bg-black/50 px-5 flex items-center justify-center z-50">
+      <div className="absolute m-auto w-[90%] md:w-[50%] p-2.5 bg-[#1B0E27] rounded-2xl shadow-2xl">
+        <div className="absolute right-5">
+          <button
+            onClick={onClose}
+            className="text-white hover:text-purple-400 transition duration-300 p-1"
+            aria-label="Close"
           >
-            <input
-              required
-              type="text"
-              pattern="[a-zA-Z\s]+"
-              title="Name can only be Alphabets"
-              placeholder="Full Name"
-              id="name"
-              name="name"
-              className="p-3 border-2 border-purple-700 bg-transparent  text-[12px] rounded-md text-white placeholder-white/70"
-            />
-
-            <input
-              required
-              type="tel"
-              pattern="[0-9]{10}"
-              title="Phone number should be 10 digits long"
-              placeholder="Phone Number"
-              id="phone"
-              name="phone"
-              className="p-3  text-[12px] border-2 border-purple-700 bg-transparent  rounded  text-white placeholder-white/70"
-            />
-            <input
-              required
-              type="email"
-              placeholder="Email"
-              id="email"
-              name="email"
-              className="p-3 text-[12px] rounded border-2 border-purple-700 bg-transparent  text-white placeholder-white/70"
-              onChange={() => {
-                if (emailError) {
-                  setEmailError(undefined);
-                }
-              }}
-            />
-            {emailError && <p className="text-red-500 text-sm">{emailError}</p>}
-
-            <input
-              required
-              type="text"
-              placeholder="What do you do?"
-              id="contribution"
-              name="contribution"
-              className="p-3 text-[12px] rounded border-2 border-purple-700 bg-transparent  text-white placeholder-white/70"
-            />
-            <button
-              type="submit"
-              className="bg-purple-600  active:bg-transparent text-white hover:border-2 border-2 border-purple-600 hover:bg-transparent
-              transition-all duration-300 ease px-2 md:px-4  mx-auto  md:py-1 py-1.4 max-w-fit my-5  rounded-md font-bold text-[18px] md:text-xl"
-            >
-              {pending ? "Submitting..." : "Submit"}
-            </button>
-          </form>
+            <X color="white" size={24} />
+          </button>
         </div>
+        <h2 className="text-xl text-white sm:text-2xl font-bold text-center my-10">
+          Register Now
+        </h2>
+
+        <form
+          className="flex flex-col gap-2 sm:gap-6 w-full px-2 mx-auto md:px-[60px]"
+          onSubmit={onSubmit}
+        >
+          <input
+            required
+            type="text"
+            pattern="[a-zA-Z\s]+"
+            title="Name can only be Alphabets"
+            placeholder="Full Name"
+            id="name"
+            name="name"
+            className="p-3 border-2 border-purple-700 bg-transparent text-[12px] rounded-md text-white placeholder-white/70"
+          />
+          <input
+            required
+            type="tel"
+            pattern="[0-9]{10}"
+            title="Phone number should be 10 digits long"
+            placeholder="Phone Number"
+            id="phone"
+            name="phone"
+            className="p-3 text-[12px] border-2 border-purple-700 bg-transparent rounded text-white placeholder-white/70"
+          />
+          <input
+            required
+            type="email"
+            placeholder="Email"
+            id="email"
+            name="email"
+            className="p-3 text-[12px] rounded border-2 border-purple-700 bg-transparent text-white placeholder-white/70"
+            onChange={() => {
+              if (emailError) setEmailError(undefined);
+            }}
+          />
+          {emailError && <p className="text-red-500 text-sm">{emailError}</p>}
+          <input
+            required
+            type="text"
+            placeholder="What do you do?"
+            id="contribution"
+            name="contribution"
+            className="p-3 text-[12px] rounded border-2 border-purple-700 bg-transparent text-white placeholder-white/70"
+          />
+          <button
+            type="submit"
+            className="bg-purple-600 text-white hover:border-2 border-2 border-purple-600 hover:bg-transparent
+            transition-all duration-300 ease px-4 mx-auto py-2 max-w-fit my-5 rounded-md font-bold text-xl"
+          >
+            {pending ? "Submitting..." : "Submit"}
+          </button>
+        </form>
       </div>
-    </>
+    </div>
   );
 };
 
@@ -163,25 +169,21 @@ export default Form;
 const storeRecord = async (record: RecordType): Promise<PopupContentType> => {
   try {
     const data = await addDoc(collection(db, "FormData"), record);
-    const count = await fetchTotalCount()
+    const count = await fetchTotalCount();
     return {
       title: "Success",
       message: "Your registration was successful!",
       id: data.id,
       timestamp: record.timestamp,
       isSuccess: true,
-      count
+      count,
     };
   } catch (error) {
-    if (error instanceof Error) {
-      console.error("Error storing record:", error.message);
-    } else {
-      console.error("An unknown error occurred:", error);
-    }
+    console.error("Error storing record:", error);
     return {
       title: "Error",
       message: "An error occurred. Please try again later.",
-      isSuccess: false
+      isSuccess: false,
     };
   }
 };
@@ -190,28 +192,30 @@ const fetchTotalCount = async () => {
   try {
     const colRef = collection(db, "FormData");
     const snapshot = await getCountFromServer(colRef);
-    const count = snapshot.data().count;
-    return count;
+    return snapshot.data().count || 0;
   } catch (error) {
     console.error("Error fetching total count:", error);
     return 0;
   }
-}
-const checkIfEmailExists = async (email: string): Promise<{
-  emailExists: boolean,
+};
+
+const checkIfEmailExists = async (
+  email: string
+): Promise<{
+  emailExists: boolean;
   record: {
-    documentId: string,
-    timestamp: string,
-    email: string,
-    name: string,
-    phone: string,
-    contribution: string
-  }
+    documentId: string;
+    timestamp: string;
+    email: string;
+    name: string;
+    phone: string;
+    contribution: string;
+  };
 }> => {
   const formDataRef = collection(db, "FormData");
   const q = query(formDataRef, where("email", "==", email));
   const querySnapshot = await getDocs(q);
-  const emailExists = !querySnapshot.empty
+  const emailExists = !querySnapshot.empty;
   if (!emailExists) {
     return {
       emailExists: false,
@@ -221,19 +225,21 @@ const checkIfEmailExists = async (email: string): Promise<{
         email: "",
         name: "",
         phone: "",
-        contribution: ""
-      }
-    }
+        contribution: "",
+      },
+    };
   }
-  const documentId = querySnapshot.docs[0].id
-  const timestamp = querySnapshot.docs[0].data().timestamp
-  const name = querySnapshot.docs[0].data().name
-  const phone = querySnapshot.docs[0].data().phone
-  const contribution = querySnapshot.docs[0].data().contribution
-  const count = undefined
-  const record = { documentId, timestamp: new Date(timestamp).toISOString(), email, name, phone, contribution, count }
+  const doc = querySnapshot.docs[0];
+  const data = doc.data();
   return {
-    emailExists: !querySnapshot.empty,
-    record
-  }
+    emailExists: true,
+    record: {
+      documentId: doc.id,
+      timestamp: new Date(data.timestamp).toISOString(),
+      email,
+      name: data.name,
+      phone: data.phone,
+      contribution: data.contribution,
+    },
+  };
 };

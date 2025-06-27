@@ -1,0 +1,82 @@
+.container {
+  background: url("../assets/images/cert_pm.png");
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 200%;
+  color: white;
+  font-family: "Segoe UI", sans-serif;
+  padding: 1rem 0px;
+
+  text-align: center;
+  width: 490px;
+  height: 420px;
+}
+
+.logo {
+  width: 50%;
+  margin: 15px auto;
+}
+
+.title {
+  font-size: 25px;
+  letter-spacing: 8px;
+  font-weight: 700;
+  color: #b57edc;
+}
+
+.subtitle {
+  font-size: 15px;
+  font-weight: 500;
+  color: #ccc;
+  margin-bottom: 15px;
+}
+
+.name {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: white;
+
+  display: inline-block;
+  padding-bottom: 0.2rem;
+  position: relative;
+}
+.name::after {
+  background-color: white;
+  content: " ";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1px 150px;
+  left: 50%;
+  top: 100%;
+  transform: translate(-50%, -50%);
+  width: 100px;
+  position: absolute;
+}
+.description {
+  font-size: 12px;
+  max-width: 85%;
+  margin: 0 auto 1rem;
+  letter-spacing: 1px;
+  line-height: 1.5;
+  color: #e0e0e0;
+}
+
+.highlight {
+  font-weight: bold;
+  color: white;
+}
+
+.id {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #fcfcfc;
+  margin-bottom: 0.5rem;
+}
+
+.hashtag {
+  font-size: 1rem;
+  color: #b399e5;
+}
