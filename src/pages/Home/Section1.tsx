@@ -7,9 +7,12 @@ import JoinUsButton from "../../components/JoinUsButton";
 export const Section1 = ({
   endDate,
   onJoinUs,
+  update, value
 }: {
   endDate: Date;
   onJoinUs: () => void;
+  value: number | undefined;
+  update: (value: number) => void
 }) => {
   const calculateTimeLeft = () => {
     const difference = endDate.getTime() - new Date().getTime();
@@ -63,7 +66,7 @@ export const Section1 = ({
       <div className="hidden md:hidden lg:visible lg:absolute lg:left-20 lg:rotate-40 lg:bottom-10 lg:flex lg:w-[50px] lg:h-[50px] lg:p-[60px] lg:bg-purple-700/20"></div>
       <div className="hidden md:hidden lg:visible lg:absolute lg:left-60 lg:rotate-40 lg:top-30 rounded-full lg:flex lg:w-[50px] lg:h-[80px] lg:p-[50px] lg:bg-purple-700/20"></div>
 
-      <Counter />
+      <Counter value={value} update={update} />
     </div>
   );
 };
