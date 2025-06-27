@@ -9,8 +9,13 @@
   padding: 1rem 0px;
 
   text-align: center;
-  width: 490px;
-  height: 420px;
+  width: 80vw;
+  height: 50vh;
+  max-width: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .logo {
@@ -42,6 +47,7 @@
   padding-bottom: 0.2rem;
   position: relative;
 }
+
 .name::after {
   background-color: white;
   content: " ";
@@ -55,6 +61,7 @@
   width: 100px;
   position: absolute;
 }
+
 .description {
   font-size: 12px;
   max-width: 85%;

@@ -54,10 +54,20 @@ export const useCertificate = () => {
 
         }
     };
+    const handleDownload = () => {
+        const canvas = canvasRef.current;
+        if (!canvas) return;
+
+        const link = document.createElement('a');
+        link.download = 'certificate.png';
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+    };
     return {
         canvasRef,
         error,
-        generateCertificate
+        generateCertificate,
+        downloadCertificate: handleDownload
     }
 
 }
