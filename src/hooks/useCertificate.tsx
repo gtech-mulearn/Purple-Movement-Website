@@ -63,18 +63,7 @@ export const useCertificate = () => {
         link.href = canvas.toDataURL('image/png');
         link.click();
     };
-    const encodeToNumber = (str: string) => {
-        const encoded = btoa(str);
 
-        return parseInt(encoded, 10);
-    }
-
-    const decodeFromNumber = (str: string) => {
-        const id = str.replace('TPMC', '')
-        const num = parseInt(id, 10);
-        const decoded = atob(num.toString());
-        return decoded;
-    }
     return {
         canvasRef,
         error,
