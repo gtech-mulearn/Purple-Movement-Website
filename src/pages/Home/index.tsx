@@ -4,6 +4,7 @@ import Navbar from "../../components/Navbar";
 import { Section1 } from "./Section1";
 import Footer from "../../components/Footer";
 import Manifesto from "./Manifesto";
+import CertificatePopup from "../../components/CertificatePopup";
 
 const Home = () => {
   const endDate = new Date("2025-06-28T15:00:00");
@@ -14,23 +15,34 @@ const Home = () => {
   const onClose = () => {
     setViewJoinModal(false);
   };
+  const [certificateData, setCertificateData] = useState<PopupContentType>();
+
   const [totalCount, setTotalCount] = useState<number>();
   const onResult = (res: PopupContentType) => {
-    console.log(res)
-    if (res.count) setTotalCount(res.count)
-    onClose()
-  }
+    setCertificateData(res);
+    if (res.count) setTotalCount(res.count);
+    onClose();
+  };
   return (
     <>
       <Navbar onJoinUs={onJoinUs} />
       <div className="px-4 sm:px-6">
-        <Form
-          onResult={onResult}
-          isOpen={viewJoinModal} onClose={onClose} />
-        <Section1 value={totalCount}
+        <Form onResult={onResult} isOpen={viewJoinModal} onClose={onClose} />
+        <Section1
+          value={totalCount}
           update={setTotalCount}
-          endDate={endDate} onJoinUs={onJoinUs} />
+          endDate={endDate}
+          onJoinUs={onJoinUs}
+        />
         <Manifesto />
+        {!!certificateData && (
+          <CertificatePopup
+            name={certificateData.name}
+            contribution={certificateData.contribution}
+            id={certificateData.id}
+            onClose={() => setCertificateData(undefined)}
+          />
+        )}
       </div>
       <Footer />
     </>
