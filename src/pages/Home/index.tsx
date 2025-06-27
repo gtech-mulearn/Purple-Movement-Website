@@ -6,7 +6,7 @@ import Footer from "../../components/Footer";
 import Manifesto from "./Manifesto";
 
 const Home = () => {
-  const endDate = new Date("2025-06-28T15:30:00");
+  const endDate = new Date("2025-06-28T15:00:00");
   const [viewJoinModal, setViewJoinModal] = useState(false);
   const onJoinUs = () => {
     setViewJoinModal(true);
