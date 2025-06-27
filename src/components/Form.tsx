@@ -92,7 +92,11 @@ const Form = ({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black/50 px-5 flex items-center justify-center z-50">
+    <div className="fixed inset-0 bg-black/50 px-5 flex items-center justify-center z-50"
+      onClick={(e) => {
+        if (e.target === e.currentTarget) onClose();
+      }}
+    >
       <div className="absolute m-auto w-[90%] md:w-[50%] p-2.5 bg-[#1B0E27] rounded-2xl shadow-2xl">
         <div className="absolute right-5">
           <button
@@ -108,7 +112,7 @@ const Form = ({
         </h2>
 
         <form
-          className="flex flex-col gap-2 sm:gap-6 w-full px-2 mx-auto md:px-[60px]"
+          className="flex flex-col gap-2 sm:gap-6  w-full px-2 mx-auto md:px-[60px]"
           onSubmit={onSubmit}
         >
           <input
@@ -119,17 +123,18 @@ const Form = ({
             placeholder="Full Name"
             id="name"
             name="name"
-            className="p-3 border-2 border-purple-700 bg-transparent text-[12px] rounded-md text-white placeholder-white/70"
+            className="p-3 border-2 border-purple-700 bg-transparent  text-[12px] rounded-md text-white placeholder-white/70"
           />
+
           <input
             required
             type="tel"
-            pattern="[0-9]{10}"
+            pattern="[0-9]{11}"
             title="Phone number should be 10 digits long"
             placeholder="Phone Number"
             id="phone"
             name="phone"
-            className="p-3 text-[12px] border-2 border-purple-700 bg-transparent rounded text-white placeholder-white/70"
+            className="p-3  text-[12px] border-2 border-purple-700 bg-transparent  rounded  text-white placeholder-white/70"
           />
           <input
             required
@@ -137,24 +142,27 @@ const Form = ({
             placeholder="Email"
             id="email"
             name="email"
-            className="p-3 text-[12px] rounded border-2 border-purple-700 bg-transparent text-white placeholder-white/70"
+            className="p-3 text-[12px] rounded border-2 border-purple-700 bg-transparent  text-white placeholder-white/70"
             onChange={() => {
-              if (emailError) setEmailError(undefined);
+              if (emailError) {
+                setEmailError(undefined);
+              }
             }}
           />
           {emailError && <p className="text-red-500 text-sm">{emailError}</p>}
+
           <input
             required
             type="text"
             placeholder="What do you do?"
             id="contribution"
             name="contribution"
-            className="p-3 text-[12px] rounded border-2 border-purple-700 bg-transparent text-white placeholder-white/70"
+            className="p-3 text-[12px] rounded border-2 border-purple-700 bg-transparent  text-white placeholder-white/70"
           />
           <button
             type="submit"
-            className="bg-purple-600 text-white hover:border-2 border-2 border-purple-600 hover:bg-transparent
-            transition-all duration-300 ease px-4 mx-auto py-2 max-w-fit my-5 rounded-md font-bold text-xl"
+            className="bg-purple-600  active:bg-transparent text-white hover:border-2 border-2 border-purple-600 hover:bg-transparent
+              transition-all duration-300 ease px-2 md:px-4  mx-auto  md:py-1 py-1.4 max-w-fit my-5  rounded-md font-bold text-[18px] md:text-xl"
           >
             {pending ? "Submitting..." : "Submit"}
           </button>
@@ -204,13 +212,13 @@ const checkIfEmailExists = async (
 ): Promise<{
   emailExists: boolean;
   record: {
-    documentId: string;
-    timestamp: string;
-    email: string;
-    name: string;
-    phone: string;
-    contribution: string;
-  };
+    id: string,
+    timestamp: string,
+    email: string,
+    name: string,
+    phone: string,
+    contribution: string
+  }
 }> => {
   const formDataRef = collection(db, "FormData");
   const q = query(formDataRef, where("email", "==", email));
@@ -220,7 +228,7 @@ const checkIfEmailExists = async (
     return {
       emailExists: false,
       record: {
-        documentId: "",
+        id: "",
         timestamp: "",
         email: "",
         name: "",
@@ -229,17 +237,15 @@ const checkIfEmailExists = async (
       },
     };
   }
-  const doc = querySnapshot.docs[0];
-  const data = doc.data();
+  const documentId = querySnapshot.docs[0].id
+  const timestamp = querySnapshot.docs[0].data().timestamp
+  const name = querySnapshot.docs[0].data().name
+  const phone = querySnapshot.docs[0].data().phone
+  const contribution = querySnapshot.docs[0].data().contribution
+  const count = undefined
+  const record = { id: documentId, timestamp: new Date(timestamp).toISOString(), email, name, phone, contribution, count }
   return {
     emailExists: true,
-    record: {
-      documentId: doc.id,
-      timestamp: new Date(data.timestamp).toISOString(),
-      email,
-      name: data.name,
-      phone: data.phone,
-      contribution: data.contribution,
-    },
+    record,
   };
 };
