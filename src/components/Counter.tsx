@@ -1,12 +1,11 @@
 import { collection, getCountFromServer } from "firebase/firestore";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { db } from "../lib/firebase";
 
-const Counter = () => {
-    const [totalCount, setTotalCount] = useState<number>();
+const Counter = ({ value, update }: { value: number | undefined; update: (value: number) => void }) => {
     useEffect(() => {
-        if (totalCount !== undefined) return
-        fetchTotalCount().then(setTotalCount);
+        if (value === undefined)
+            fetchTotalCount().then(update);
     }, []);
 
     return (
@@ -16,8 +15,8 @@ const Counter = () => {
                 Join with us and be a part of the change.
             </div>
             <div className="flex flex-row gap-3 text-xl sm:text-4xl md:text-3xl font-bold text-white mt-2 justify-center">
-                {totalCount && <>
-                    {totalCount} + Initiators
+                {value && <>
+                    {value} + Initiators
                 </>}
             </div>
         </div>

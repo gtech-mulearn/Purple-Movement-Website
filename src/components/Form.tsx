@@ -1,32 +1,36 @@
-import { collection, query, where, getDocs, addDoc } from "firebase/firestore";
-import { db } from "../lib/firebase";
+import { addDoc, collection, getCountFromServer, getDocs, query, where } from "firebase/firestore";
 import { X } from "lucide-react";
-import { useFormStatus } from "react-dom";
-import SuccessCard from "./SuccessCard";
 import { useState } from "react";
-import style from "./customCheckbox.module.css";
+import { useFormStatus } from "react-dom";
+import { db } from "../lib/firebase";
 type RecordType = {
   name: string;
   phone: string;
-  student: string;
-  faculity: string;
   email: string;
-  college: string;
   contribution: string;
   timestamp: string;
 };
-type PopupContentType = {
+export type PopupContentType = {
   title: string;
   message: string;
+  id?: string;
+  timestamp?: string;
+  name?: string;
+  phone?: string;
+  email?: string;
+  contribution?: string;
+  isSuccess?: boolean;
+  count?: number
 };
 const Form = ({
   isOpen,
   onClose,
+  onResult
 }: {
   onClose: () => void;
   isOpen: boolean;
+  onResult: (result: PopupContentType) => void;
 }) => {
-  const [popupContent, setPopupContent] = useState<PopupContentType>();
   const [emailError, setEmailError] = useState<string>();
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -34,51 +38,49 @@ const Form = ({
     const formData = new FormData(form);
     const name = formData.get("name") as string;
     const phone = formData.get("phone") as string;
-    const student = formData.get("student") as string;
-    const faculity = formData.get("faculity") as string;
     const email = formData.get("email") as string;
-    const college = formData.get("college") as string;
     const contribution = formData.get("contribution") as string;
-    const hasEmail = await checkIfEmailExists(email).catch(() => {
-      setEmailError("Something went wrong, please try again later");
-    });
-    if (hasEmail) {
-      setEmailError("Email already exists");
-      const timer = setTimeout(() => {
-        setEmailError(undefined);
-      }, 10000);
-      return () => clearTimeout(timer);
+
+    try {
+      const { emailExists, record } = await checkIfEmailExists(email)
+      if (emailExists) {
+        onResult({
+          title: "Success",
+          message: "Email already exists",
+          ...record
+        })
+        return
+      }
+    } catch (error) {
+      console.log(error)
     }
+
     const res = await storeRecord({
       name,
-      student,
-      faculity,
       phone,
       email,
-      college,
       contribution,
-      timestamp: new Date().toLocaleString(),
+      timestamp: new Date().toISOString(),
+
     });
-    setPopupContent(res);
+    onResult({
+      title: res.title,
+      message: res.message,
+      id: res.id,
+      timestamp: res.timestamp,
+      name,
+      phone,
+      email,
+      contribution,
+      count: res.count
+    });
   };
   const { pending } = useFormStatus();
 
-  // Faculity or Student
-  const [selected, setSelected] = useState("");
-
-  const handleSelect = (value: string) => {
-    setSelected((prev) => (prev === value ? "" : value));
-  };
   if (!isOpen) return null;
   return (
     <>
-      {!!popupContent && (
-        <SuccessCard
-          title={popupContent.title}
-          message={popupContent.message}
-          onClose={() => setPopupContent(undefined)}
-        />
-      )}
+
       <div className="fixed inset-0 bg-black/50 px-5 flex items-center  justify-center z-50">
         <div className="absolute m-auto  w-[90%] md:w-[50%] p-2.5  bg-[#1B0E27] rounded-2xl shadow-2xl">
           <div className="absolute right-5 ">
@@ -90,12 +92,12 @@ const Form = ({
               <X color="white" size={24} />
             </button>
           </div>
-          <h2 className="text-xl text-white sm:text-2xl font-bold text-center my-4 ">
+          <h2 className="text-xl text-white sm:text-2xl font-bold text-center my-10 ">
             Register Now
           </h2>
 
           <form
-            className="flex flex-col gap-2 sm:gap-3 w-full px-2 mx-auto md:px-[60px]"
+            className="flex flex-col gap-2 sm:gap-6  w-full px-2 mx-auto md:px-[60px]"
             onSubmit={onSubmit}
           >
             <input
@@ -133,46 +135,11 @@ const Form = ({
               }}
             />
             {emailError && <p className="text-red-500 text-sm">{emailError}</p>}
-            <div className={`${style.container} flex justify-evenly`}>
-              {/* Student */}
-              <label className="flex items-center space-x-2 cursor-pointer text-white">
-                <input
-                  checked={selected == "student"}
-                  onChange={() => handleSelect("student")}
-                  type="checkbox"
-                  name="student"
-                  id="student"
-                />
-                <span className={`${style.checkmark}`}></span>
-                <span className="text-sm font-medium">Student</span>
-              </label>
-
-              {/* Faculty */}
-              <label className="flex items-center space-x-2  cursor-pointer text-white">
-                <input
-                  checked={selected == "faculity"}
-                  onChange={() => handleSelect("faculity")}
-                  type="checkbox"
-                  name="faculty"
-                  id="faculty"
-                />
-                <span className={`${style.checkmark}`}></span>
-                <span className="text-sm font-medium">Faculty</span>
-              </label>
-            </div>
 
             <input
               required
               type="text"
-              placeholder="College"
-              id="college"
-              name="college"
-              className="p-3  text-[12px]  rounded border-2 border-purple-700 bg-transparent  text-white placeholder-white/70"
-            />
-            <input
-              required
-              type="text"
-              placeholder="Contribution"
+              placeholder="What do you do?"
               id="contribution"
               name="contribution"
               className="p-3 text-[12px] rounded border-2 border-purple-700 bg-transparent  text-white placeholder-white/70"
@@ -195,12 +162,15 @@ export default Form;
 
 const storeRecord = async (record: RecordType): Promise<PopupContentType> => {
   try {
-    console.log("Document with Data: " + JSON.stringify(record));
     const data = await addDoc(collection(db, "FormData"), record);
-    console.log("Document written with ID:", data.id);
+    const count = await fetchTotalCount()
     return {
       title: "Success",
       message: "Your registration was successful!",
+      id: data.id,
+      timestamp: record.timestamp,
+      isSuccess: true,
+      count
     };
   } catch (error) {
     if (error instanceof Error) {
@@ -211,13 +181,59 @@ const storeRecord = async (record: RecordType): Promise<PopupContentType> => {
     return {
       title: "Error",
       message: "An error occurred. Please try again later.",
+      isSuccess: false
     };
   }
 };
 
-const checkIfEmailExists = async (email: string): Promise<boolean> => {
+const fetchTotalCount = async () => {
+  try {
+    const colRef = collection(db, "FormData");
+    const snapshot = await getCountFromServer(colRef);
+    const count = snapshot.data().count;
+    return count;
+  } catch (error) {
+    console.error("Error fetching total count:", error);
+    return 0;
+  }
+}
+const checkIfEmailExists = async (email: string): Promise<{
+  emailExists: boolean,
+  record: {
+    documentId: string,
+    timestamp: string,
+    email: string,
+    name: string,
+    phone: string,
+    contribution: string
+  }
+}> => {
   const formDataRef = collection(db, "FormData");
   const q = query(formDataRef, where("email", "==", email));
   const querySnapshot = await getDocs(q);
-  return !querySnapshot.empty;
+  const emailExists = !querySnapshot.empty
+  if (!emailExists) {
+    return {
+      emailExists: false,
+      record: {
+        documentId: "",
+        timestamp: "",
+        email: "",
+        name: "",
+        phone: "",
+        contribution: ""
+      }
+    }
+  }
+  const documentId = querySnapshot.docs[0].id
+  const timestamp = querySnapshot.docs[0].data().timestamp
+  const name = querySnapshot.docs[0].data().name
+  const phone = querySnapshot.docs[0].data().phone
+  const contribution = querySnapshot.docs[0].data().contribution
+  const count = undefined
+  const record = { documentId, timestamp: new Date(timestamp).toISOString(), email, name, phone, contribution, count }
+  return {
+    emailExists: !querySnapshot.empty,
+    record
+  }
 };
