@@ -15,9 +15,10 @@ const JoinUsButton = ({ onClick, className, children, ...props }: Button) => {
                 )}
             {...props}
         >
-            Join Us {children}
+            {children || "Join Us"}
         </button>
     )
 }
 
 export default JoinUsButton
+
