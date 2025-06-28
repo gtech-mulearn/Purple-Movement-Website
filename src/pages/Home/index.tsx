@@ -7,17 +7,14 @@ import Manifesto from "./Manifesto";
 import CertificatePopup from "../../components/CertificatePopup";
 
 const Home = () => {
-  const endDate = new Date("2025-06-28T15:00:00");
+  const endDate = new Date("2025-06-28T15:49:00");
   const [viewJoinModal, setViewJoinModal] = useState(false);
-  const onJoinUs = () => {
-    setViewJoinModal(true);
-  };
-  const onClose = () => {
-    setViewJoinModal(false);
-  };
+  const [showLaunch, setShowLaunch] = useState(false);
   const [certificateData, setCertificateData] = useState<PopupContentType>();
-
   const [totalCount, setTotalCount] = useState<number>();
+
+  const onJoinUs = () => setViewJoinModal(true);
+  const onClose = () => setViewJoinModal(false);
   const onResult = (res: PopupContentType) => {
     setCertificateData(res);
     if (res.count) setTotalCount(res.count);
@@ -39,6 +36,8 @@ const Home = () => {
           update={setTotalCount}
           endDate={endDate}
           onJoinUs={onJoinUs}
+          onTimerEnd={() => setShowLaunch(true)}
+          isLaunched={showLaunch}
         />
         <Manifesto />
         {!!certificateData && (
