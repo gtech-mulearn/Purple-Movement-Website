@@ -7,7 +7,7 @@ import Manifesto from "./Manifesto";
 import CertificatePopup from "../../components/CertificatePopup";
 
 const Home = () => {
-  const endDate = new Date("2025-06-28T15:00:00");
+  const endDate = new Date("2025-06-28T16:00:00");
   const [viewJoinModal, setViewJoinModal] = useState(false);
   const onJoinUs = () => {
     setViewJoinModal(true);
