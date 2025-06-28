@@ -44,10 +44,18 @@
 .name {
   font-size: 18px;
   font-weight: 700;
+
   border-bottom: 1px solid white;
   margin-bottom: 10px;
   padding-bottom: 5px;
   width: 90%;
+
+  margin: auto;
+
+  display: inline-block;
+  padding-bottom: 8px;
+  position: relative;
+
 }
 
 .description {
@@ -111,4 +119,8 @@
   .hashtag {
     font-size: 15px;
   }
+}
+
+button{
+  border: none;
 }
