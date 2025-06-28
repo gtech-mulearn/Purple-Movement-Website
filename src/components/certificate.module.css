@@ -6,11 +6,11 @@
   background-size: 200%;
   color: white;
   font-family: "Segoe UI", sans-serif;
-  padding: 1rem 0px;
+  padding: 10px 0px;
 
   text-align: center;
-  width: 80vw;
-  height: 50vh;
+  width: 500px;
+  height: 350px;
   max-width: 100%;
   overflow: hidden;
   display: flex;
@@ -19,7 +19,7 @@
 }
 
 .logo {
-  width: 50%;
+  width: 35%;
   margin: 15px auto;
 }
 
@@ -40,30 +40,17 @@
 .name {
   font-size: 20px;
   font-weight: 700;
-  margin-bottom: 1rem;
   color: white;
-
+  width: 80%;
+  margin: auto;
+  border-bottom: white 1px solid;
   display: inline-block;
-  padding-bottom: 0.2rem;
+  padding-bottom: 5px;
   position: relative;
 }
 
-.name::after {
-  background-color: white;
-  content: " ";
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1px 150px;
-  left: 50%;
-  top: 100%;
-  transform: translate(-50%, -50%);
-  width: 100px;
-  position: absolute;
-}
-
 .description {
-  font-size: 12px;
+  font-size: 11px;
   max-width: 85%;
   margin: 0 auto 1rem;
   letter-spacing: 1px;
@@ -77,7 +64,7 @@
 }
 
 .id {
-  font-size: 1.2rem;
+  font-size: 12px;
   font-weight: 600;
   color: #fcfcfc;
   margin-bottom: 0.5rem;

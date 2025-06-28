@@ -28,7 +28,8 @@ const Home = () => {
     if (res.count) setTotalCount(res.count);
     onClose();
   };
-  const { canvasRef, generateCertificate, downloadCertificate } = useCertificate()
+  const { canvasRef, generateCertificate, downloadCertificate } =
+    useCertificate();
   return (
     <>
       <canvas
@@ -53,7 +54,6 @@ const Home = () => {
             contribution={certificateData.contribution}
             id={certificateData.id}
             onClose={() => setCertificateData(undefined)}
-            onDownload={downloadCertificate}
           />
         )}
       </div>
