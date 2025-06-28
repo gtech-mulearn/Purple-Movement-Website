@@ -7,7 +7,7 @@ import Manifesto from "./Manifesto";
 import CertificatePopup from "../../components/CertificatePopup";
 
 const Home = () => {
-  const endDate = new Date("2025-06-28T15:49:00");
+  const endDate = new Date("2025-06-28T16:09:00");
   const [viewJoinModal, setViewJoinModal] = useState(false);
   const [showLaunch, setShowLaunch] = useState(false);
   const [certificateData, setCertificateData] = useState<PopupContentType>();
