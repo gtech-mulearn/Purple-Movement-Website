@@ -1,5 +1,5 @@
 import bgVideo from "./assets/bg.mp4";
-
+import Footer from "./components/Footer/footer";
 import Manifesto from "./components/ManifestoPage/manifestoPage";
 
 import { LogoSlider } from "./components/LogoSlider/logoSlider";
@@ -7,9 +7,42 @@ import { Muverse } from "./components/muVresePage/muVersePage";
 import { WhyNow } from "./components/Whynow/whyNow";
 import { VideoSection } from "./components/VideoSection/VideoSection";
 import { Navbar } from "./components/Navbar/navbar";
-import Footer from "./components/Footer/footer";
 
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 const HomePage = () => {
+  const headingRef = useRef<HTMLHeadingElement | null>(null);
+  const subTextRef = useRef<HTMLParagraphElement | null>(null);
+
+  useEffect(() => {
+    gsap.fromTo(
+      headingRef.current,
+      { y: 100, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 1.5,
+        ease: "power4.out",
+        delay: 0.2,
+      },
+    );
+
+    gsap.fromTo(
+      subTextRef.current,
+      { opacity: 0, y: 50 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1.2,
+        ease: "power3.out",
+        delay: 0.8,
+      },
+    );
+  }, []);
+
   return (
     <div>
       <Navbar />
@@ -30,13 +63,19 @@ const HomePage = () => {
         <div className="p-[250px] left-[-90px] bottom-[10px] absolute bg-purple-600 bg-opacity-40 rounded-full blur-[100px]"></div>
 
         <div className="relative z-10 h-[100vh]  flex flex-col items-center justify-center  ">
-          <h1 className="bg-clip-text text-transparent bg-gradient-to-tr from-purple-600  to-fuchsia-600 font-[Montesrrat] leading-none md:text-[3rem] text-center font-bold text-[2rem]  lg:text-[6rem] ">
+          <h1
+            className="bg-clip-text text-transparent bg-gradient-to-tr from-purple-600  to-fuchsia-600 font-[Montesrrat] leading-none md:text-[3rem] text-center font-bold text-[2rem]  lg:text-[6rem] "
+            ref={headingRef}
+          >
             We Are The <br />
             <span className="flex flex-row ">
               <p>Purple Movement</p>
             </span>
           </h1>
-          <p className="text-white lg:text-[1.5rem] text-[1rem] p-3 mt-8 text-center ">
+          <p
+            ref={subTextRef}
+            className="text-white lg:text-[1.5rem] text-[1rem] p-3 mt-8 text-center "
+          >
             Rebuilding how India learns-Beyond Borders, Beyond Syllabus, Beyond
             Gatekeepers, Beyond Paywalls
           </p>
