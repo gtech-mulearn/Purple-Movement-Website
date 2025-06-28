@@ -3,7 +3,7 @@ import html2canvas from "html2canvas";
 import { useRef } from "react";
 import styles from "./certificate.module.css";
 import logo from "../assets/images/logo_pm.png";
-import { FaTwitter, FaFacebookF, FaWhatsapp, FaLinkedin } from "react-icons/fa";
+import { FaFacebookF, FaWhatsapp, FaLinkedin } from "react-icons/fa";
 // adjust path to your Button component
 
 type CertificatePopupProps = {
