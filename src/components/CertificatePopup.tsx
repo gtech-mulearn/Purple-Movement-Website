@@ -3,7 +3,7 @@ import html2canvas from "html2canvas";
 import { useRef } from "react";
 import styles from "./certificate.module.css";
 import logo from "../assets/images/logo_pm.png";
-import { FaTwitter, FaFacebookF, FaWhatsapp, FaLinkedin } from "react-icons/fa";
+import { FaFacebookF, FaWhatsapp, FaLinkedin } from "react-icons/fa";
 // adjust path to your Button component
 
 type CertificatePopupProps = {
@@ -102,7 +102,7 @@ const CertificatePopup: React.FC<CertificatePopupProps> = ({
 
           <p className={styles.description}>
             has officially joined as{" "}
-            <span className="font-bold">{contribution}</span>--Contributor to{" "}
+            <span className="font-bold">{contribution}</span> -Contributor to{" "}
             <span className={styles.highlight}>The Purple Movement</span>,
             joining the mission to redefine norms, spark bold ideas, and connect
             the dots that drive real change.

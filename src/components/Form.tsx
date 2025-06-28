@@ -162,7 +162,7 @@ const Form = ({
           />
           <button
             type="submit"
-            className="bg-purple-600  active:bg-transparent text-white hover:border-2 border-2 border-purple-600 hover:bg-transparent
+            className="active:bg-transparent text-white bg-purple-600 
               transition-all duration-300 ease px-2 md:px-4  mx-auto  md:py-1 py-1.4 max-w-fit my-5  rounded-md font-bold text-[18px] md:text-xl"
           >
             {pending ? "Submitting..." : "Submit"}
