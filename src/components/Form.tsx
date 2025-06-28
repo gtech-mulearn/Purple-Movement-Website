@@ -92,7 +92,8 @@ const Form = ({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black/50 px-5 flex items-center justify-center z-50"
+    <div
+      className="fixed inset-0 bg-black/50 px-5 flex items-center justify-center z-50"
       onClick={(e) => {
         if (e.target === e.currentTarget) onClose();
       }}
@@ -129,7 +130,7 @@ const Form = ({
           <input
             required
             type="tel"
-            pattern="[0-9]{11}"
+            pattern="[0-9]{10}"
             title="Phone number should be 10 digits long"
             placeholder="Phone Number"
             id="phone"
@@ -212,13 +213,13 @@ const checkIfEmailExists = async (
 ): Promise<{
   emailExists: boolean;
   record: {
-    id: string,
-    timestamp: string,
-    email: string,
-    name: string,
-    phone: string,
-    contribution: string
-  }
+    id: string;
+    timestamp: string;
+    email: string;
+    name: string;
+    phone: string;
+    contribution: string;
+  };
 }> => {
   const formDataRef = collection(db, "FormData");
   const q = query(formDataRef, where("email", "==", email));
@@ -237,13 +238,21 @@ const checkIfEmailExists = async (
       },
     };
   }
-  const documentId = querySnapshot.docs[0].id
-  const timestamp = querySnapshot.docs[0].data().timestamp
-  const name = querySnapshot.docs[0].data().name
-  const phone = querySnapshot.docs[0].data().phone
-  const contribution = querySnapshot.docs[0].data().contribution
-  const count = undefined
-  const record = { id: documentId, timestamp: new Date(timestamp).toISOString(), email, name, phone, contribution, count }
+  const documentId = querySnapshot.docs[0].id;
+  const timestamp = querySnapshot.docs[0].data().timestamp;
+  const name = querySnapshot.docs[0].data().name;
+  const phone = querySnapshot.docs[0].data().phone;
+  const contribution = querySnapshot.docs[0].data().contribution;
+  const count = undefined;
+  const record = {
+    id: documentId,
+    timestamp: new Date(timestamp).toISOString(),
+    email,
+    name,
+    phone,
+    contribution,
+    count,
+  };
   return {
     emailExists: true,
     record,
