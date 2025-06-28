@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import logo from "../../assets/images/logo_pm.png";
+
 import Counter from "../../components/Counter";
 import Timer from "../../components/Timer";
 import JoinUsButton from "../../components/JoinUsButton";
@@ -50,11 +50,7 @@ export const Section1 = ({
 
   return (
     <div className="flex flex-col min-h-screen justify-center items-center w-full text-white pt-24 sm:pt-32 pb-28">
-      <img
-        src={logo}
-        alt="Purple Movement Logo"
-        className="drop-shadow-[5px_5px_25px_rgb(119,14,189)] h-16 xs:h-24 sm:h-24 object-contain"
-      />
+     
       {isLaunched ? (
         <LaunchPage />
       ) : (
