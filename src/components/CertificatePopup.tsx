@@ -55,7 +55,7 @@ const CertificatePopup: React.FC<CertificatePopupProps> = ({
           <p className={styles.subtitle}>of Appreciation</p>
           <div className={styles.name}>{name}</div>
           <p className={styles.description}>
-            has officially joined as <span className="font-bold">{contribution}</span> -Contributor to{" "}
+            has officially joined as <span className="font-bold">{contribution}</span> Contributor to{" "}
             <span className={styles.highlight}>The Purple Movement</span>, joining the mission to redefine norms,
             spark bold ideas, and connect the dots that drive real change.
           </p>
