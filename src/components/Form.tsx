@@ -42,6 +42,8 @@ const Form = ({
   onResult: (result: PopupContentType) => void;
 }) => {
   const [emailError, setEmailError] = useState<string>();
+  const [phone, setPhone] = useState("");
+  const [error, setError] = useState("");
 
   const { pending } = useFormStatus();
 
@@ -49,10 +51,21 @@ const Form = ({
     e.preventDefault();
     const form = e.currentTarget;
     const formData = new FormData(form);
+
     const name = formData.get("name") as string;
-    const phone = formData.get("phone") as string;
     const email = formData.get("email") as string;
     const contribution = formData.get("contribution") as string;
+
+    const digitsOnly = phone.replace(/\D/g, ""); // Remove +, -, spaces etc.
+
+    if (digitsOnly.length !== 10) {
+      setError(
+        "Phone number must contain exactly 10 digits (excluding country code)."
+      );
+      return;
+    } else {
+      setError("");
+    }
 
     try {
       const { emailExists, record } = await checkIfEmailExists(email);
@@ -113,7 +126,7 @@ const Form = ({
         </h2>
 
         <form
-          className="flex flex-col gap-2 sm:gap-6  w-full px-2 mx-auto md:px-[60px]"
+          className="flex flex-col gap-2 sm:gap-6 w-full px-2 mx-auto md:px-[60px]"
           onSubmit={onSubmit}
         >
           <input
@@ -124,26 +137,31 @@ const Form = ({
             placeholder="Full Name"
             id="name"
             name="name"
-            className="p-3 border-2 border-purple-700 bg-transparent  text-[12px] rounded-md text-white placeholder-white/70"
+            className="p-3 border-2 border-purple-700 bg-transparent text-[12px] rounded-md text-white placeholder-white/70"
           />
 
           <input
-            required
             type="tel"
-            pattern="[0-9]{10}"
-            title="Phone number should be 10 digits long"
-            placeholder="Phone Number"
             id="phone"
             name="phone"
-            className="p-3  text-[12px] border-2 border-purple-700 bg-transparent  rounded  text-white placeholder-white/70"
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
+            placeholder="Phone"
+            className="p-3 text-[12px] border-2 border-purple-700 bg-transparent rounded text-white placeholder-white/70"
+            required
+            minLength={10}
+            maxLength={18}
           />
+
+          {error && <p className="text-red-400 text-xs">{error}</p>}
+
           <input
             required
             type="email"
             placeholder="Email"
             id="email"
             name="email"
-            className="p-3 text-[12px] rounded border-2 border-purple-700 bg-transparent  text-white placeholder-white/70"
+            className="p-3 text-[12px] rounded border-2 border-purple-700 bg-transparent text-white placeholder-white/70"
             onChange={() => {
               if (emailError) {
                 setEmailError(undefined);
@@ -158,12 +176,12 @@ const Form = ({
             placeholder="What do you do?"
             id="contribution"
             name="contribution"
-            className="p-3 text-[12px] rounded border-2 border-purple-700 bg-transparent  text-white placeholder-white/70"
+            className="p-3 text-[12px] rounded border-2 border-purple-700 bg-transparent text-white placeholder-white/70"
           />
           <button
             type="submit"
             className="active:bg-transparent text-white bg-purple-600 
-              transition-all duration-300 ease px-2 md:px-4  mx-auto  md:py-1 py-1.4 max-w-fit my-5  rounded-md font-bold text-[18px] md:text-xl"
+              transition-all duration-300 ease px-2 md:px-4 mx-auto md:py-1 py-1.4 max-w-fit my-5 rounded-md font-bold text-[18px] md:text-xl"
           >
             {pending ? "Submitting..." : "Submit"}
           </button>
