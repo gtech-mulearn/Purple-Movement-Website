@@ -2,7 +2,7 @@ import JoinUsButton from "../../components/JoinUsButton";
 
 const LaunchPage = () => {
   const handleLaunch = () => {
-    window.location.href = "https://purplemovement-landing-rose.vercel.app";
+    window.location.href = "https://purplemovement-landing-rose.vercel.app/";
   };
 
   return (
