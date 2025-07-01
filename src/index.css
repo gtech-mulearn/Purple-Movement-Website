@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: Montesrrat;
+  src: url("../src/assets/fonts/montserrat/Montserrat-Bold.ttf");
+}
+html {
+  scroll-behavior: smooth;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body::-webkit-scrollbar {
+  width: 4px;
+}
+
+body::-webkit-scrollbar-track {
+  background: rgb(80, 79, 79);
+}
+
+body::-webkit-scrollbar-thumb {
+  background: #323131;
+
+  border-radius: 20px;
+}
