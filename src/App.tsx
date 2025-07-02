@@ -1,11 +1,7 @@
-import Home from './pages/Home';
-
 const App = () => (
-    <div className="bg-[url('../src/assets/images/bg.png')] bg-no-repeat bg-cover">
-        <Home />
-    </div>
-)
-export default App
-
-
-
+  <iframe
+    src="https://purplemovement-landing-rose.vercel.app/"
+    style={{ width: "100%", height: "100vh" }}
+  ></iframe>
+);
+export default App;
