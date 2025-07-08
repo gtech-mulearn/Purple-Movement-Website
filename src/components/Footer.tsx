@@ -1,5 +1,4 @@
 import { Instagram, MapPin, Copyright } from "lucide-react";
-import logo from "../assets/images/logo_pm.png";
 const Footer = () => {
   return (
     <footer
@@ -12,13 +11,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10">
           {/* Left Column - About */}
           <div className="md:col-span-3 flex flex-col">
-            <div className="flex justify-start mb-5">
-              <img
-                src={logo}
-                alt="Purple movement Logo"
-                className="h-16 object-contain"
-              />
-            </div>
+            
             <p className="text-[rgba(242,242,242,1)] text-base font-normal leading-6 mb-6">
               <span className="font-bold text-[1.5rem]">
                 The Purple Movement
